@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maria & Daniel · 19·12·2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Lato:wght@300;400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+/* ── Reset ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── Tokens ── */
+:root{
+  --sage:#677b69;
+  --gold:#bca670;
+  --light:#e6e6e6;
+  --tan:#b59a6b;
+  --sage-mid:#88a182;
+  --mist:#c6cdc9;
+  --cream:#f8f6f2;
+  --white:#ffffff;
+  --dark:#3a3a3a;
+  --text:#5a5a5a;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Lato',sans-serif;
+  font-weight:300;
+  color:var(--dark);
+  background:var(--cream);
+  overflow-x:hidden;
+}
+
+/* ── Nav ── */
+#navbar{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 3rem;
+  background:rgba(248,246,242,0.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s,box-shadow .3s;
+}
+#navbar.scrolled{border-color:var(--mist);box-shadow:0 2px 24px rgba(0,0,0,.05)}
+
+.nav-logo{
+  font-family:'Great Vibes',cursive;
+  font-size:1.9rem;color:var(--sage);text-decoration:none;
+  letter-spacing:.02em;
+}
+
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{
+  text-decoration:none;font-size:.68rem;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--dark);transition:color .2s;
+}
+.nav-links a:hover{color:var(--sage)}
+
+.lang-switcher{display:flex;gap:.4rem}
+.lang-btn{
+  background:none;border:1px solid var(--mist);
+  padding:.22rem .55rem;font-size:.62rem;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;color:var(--dark);
+  transition:all .2s;font-family:'Lato',sans-serif;
+}
+.lang-btn.active,.lang-btn:hover{
+  background:var(--sage);border-color:var(--sage);color:#fff;
+}
+
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  cursor:pointer;background:none;border:none;padding:4px;
+}
+.hamburger span{display:block;width:22px;height:1px;background:var(--dark);transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* ── Hero ── */
+#home{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:8rem 2rem 5rem;
+  position:relative;overflow:hidden;
+  background:var(--cream);
+}
+
+/* Botanical SVG corners */
+.botanical-tl,.botanical-br,.botanical-tr,.botanical-bl{
+  position:absolute;pointer-events:none;opacity:.18;
+}
+.botanical-tl{top:-20px;left:-20px;width:380px}
+.botanical-tr{top:-20px;right:-20px;width:320px;transform:scaleX(-1)}
+.botanical-bl{bottom:-20px;left:-20px;width:280px;transform:scaleY(-1)}
+.botanical-br{bottom:-20px;right:-20px;width:300px;transform:scale(-1,-1)}
+
+.hero-couple{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;align-items:center;
+  line-height:1;
+}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.5rem,10vw,7.5rem);
+  font-weight:300;letter-spacing:.04em;
+  color:var(--sage);line-height:.95;
+}
+.hero-amp{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(3rem,8vw,5.5rem);
+  color:var(--gold);line-height:1.1;
+  display:block;margin:.1rem 0;
+}
+
+.hero-date-wrap{
+  position:relative;z-index:1;
+  margin:2.5rem 0 .6rem;
+}
+.hero-date{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(.9rem,2vw,1.1rem);
+  letter-spacing:.35em;text-transform:uppercase;color:var(--dark);
+}
+.hero-location{
+  font-size:.7rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--sage-mid);margin-top:.5rem;
+}
+
+/* Floral divider */
+.floral-divider{
+  display:flex;align-items:center;gap:.9rem;
+  margin:2.2rem auto;max-width:260px;
+  position:relative;z-index:1;
+}
+.floral-line{flex:1;height:1px;background:var(--mist)}
+
+/* Countdown */
+.countdown-wrap{position:relative;z-index:1;text-align:center;margin:.5rem 0 2.5rem}
+.countdown-number{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(4.5rem,12vw,8rem);
+  font-weight:300;color:var(--sage);line-height:1;display:block;
+}
+.countdown-sublabel{
+  font-size:.65rem;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--tan);margin-top:.5rem;display:block;
+}
+
+/* Hero photo */
+.hero-photo{
+  position:relative;z-index:1;
+  width:100%;max-width:820px;
+  margin:0 auto;
+}
+.hero-photo::before{
+  content:'';position:absolute;
+  top:-10px;left:-10px;right:-10px;bottom:-10px;
+  border:1px solid rgba(188,166,112,.4);
+  pointer-events:none;z-index:1;
+}
+.hero-photo img{
+  width:100%;height:auto;display:block;
+}
+
+/* ── Shared section ── */
+.section{padding:6rem 2rem}
+.section--alt{background:var(--white)}
+.section--sage{background:#f0f3f0}
+
+.section-inner{max-width:940px;margin:0 auto}
+
+.eyebrow{
+  font-size:.62rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--gold);
+  text-align:center;margin-bottom:.7rem;
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3rem);
+  font-weight:300;text-align:center;color:var(--sage);margin-bottom:.9rem;
+}
+.section-lead{
+  text-align:center;font-size:.88rem;line-height:1.9;
+  color:var(--text);max-width:620px;margin:0 auto 3.5rem;
+}
+
+/* ── Timeline ── */
+.timeline{
+  position:relative;max-width:680px;margin:0 auto;padding-left:2.5rem;
+}
+.timeline::before{
+  content:'';position:absolute;left:.65rem;top:0;bottom:0;
+  width:1px;background:var(--mist);
+}
+.timeline-item{
+  position:relative;margin-bottom:2.8rem;
+  opacity:0;transform:translateY(20px);
+  transition:opacity .5s,transform .5s;
+}
+.timeline-item.visible{opacity:1;transform:none}
+.timeline-dot{
+  position:absolute;left:-1.85rem;top:.32rem;
+  width:10px;height:10px;border-radius:50%;background:var(--sage);
+  box-shadow:0 0 0 3px var(--cream),0 0 0 5px var(--mist);
+}
+.section--alt .timeline-dot{box-shadow:0 0 0 3px var(--white),0 0 0 5px var(--mist)}
+.timeline-time{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.85rem;font-style:italic;
+  color:var(--gold);margin-bottom:.2rem;letter-spacing:.03em;
+}
+.timeline-event{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;color:var(--dark);margin-bottom:.15rem;
+}
+.timeline-venue{font-size:.75rem;letter-spacing:.06em;color:var(--sage-mid)}
+.timeline-note{font-size:.75rem;color:#aaa;font-style:italic;margin-top:.2rem}
+
+/* ── Travel ── */
+.travel-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1.4rem;margin-top:2rem;
+}
+.travel-card{
+  border:1px solid var(--mist);padding:2rem 1.8rem;background:var(--white);
+  transition:box-shadow .25s,transform .25s;
+}
+.travel-card:hover{box-shadow:0 10px 40px rgba(0,0,0,.07);transform:translateY(-3px)}
+.travel-icon{font-size:1.4rem;margin-bottom:.9rem}
+.travel-card-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;color:var(--sage);margin-bottom:.6rem;
+}
+.travel-card-text{font-size:.82rem;line-height:1.85;color:var(--text)}
+
+/* ── Quito hero block ── */
+.quito-hero-title{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(3rem,7vw,5rem);
+  color:var(--sage);text-align:center;
+  margin-bottom:1.8rem;
+  position:relative;z-index:1;
+}
+.city-photo-wrap{
+  position:relative;margin:0 0 0;cursor:zoom-in;
+}
+.city-photo-wrap img{
+  width:100%;display:block;
+  height:clamp(280px,45vw,520px);object-fit:cover;
+}
+.city-photo-credit{
+  position:absolute;bottom:.6rem;right:.8rem;
+  font-size:.6rem;color:rgba(255,255,255,.8);
+  letter-spacing:.08em;text-decoration:none;
+  background:rgba(0,0,0,.3);padding:.18rem .5rem;
+  backdrop-filter:blur(4px);
+  transition:color .2s;
+}
+.city-photo-credit:hover{color:#fff}
+
+/* Quito facts strip */
+.quito-facts{
+  display:flex;flex-wrap:wrap;gap:0;
+  border:1px solid var(--mist);border-top:none;
+  background:var(--white);
+}
+.quito-fact{
+  flex:1;min-width:130px;
+  padding:1.2rem 1rem;
+  border-right:1px solid var(--mist);
+  text-align:center;
+}
+.quito-fact:last-child{border-right:none}
+.qf-value{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.7rem;color:var(--sage);
+  display:block;line-height:1;margin-bottom:.3rem;
+}
+.qf-label{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
+
+/* ── Hotel Carousel ── */
+.hotels-section{margin-top:4rem}
+.hotels-section-label{
+  font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);text-align:center;margin-bottom:.5rem;
+}
+.hotels-section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.5rem,3vw,2.2rem);font-weight:300;
+  color:var(--sage);text-align:center;margin-bottom:2.5rem;
+}
+
+/* Equal-height hotel cards side by side */
+.hotels-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.4rem;
+  align-items:stretch;
+}
+.hotel-card{
+  border:1px solid var(--mist);background:var(--white);
+  display:flex;flex-direction:column;
+  transition:box-shadow .3s;
+}
+.hotel-card:hover{box-shadow:0 12px 48px rgba(0,0,0,.08)}
+
+/* Thumbnail carousel */
+.hotel-carousel{
+  position:relative;overflow:hidden;
+  height:200px;flex-shrink:0;cursor:zoom-in;
+}
+.carousel-track{
+  display:flex;height:100%;
+  transition:transform .5s cubic-bezier(.4,0,.2,1);
+}
+.carousel-slide{
+  min-width:100%;height:100%;flex-shrink:0;
+}
+.carousel-slide img{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+.carousel-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,.82);border:none;
+  width:26px;height:26px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:.75rem;color:var(--dark);
+  transition:background .2s;z-index:2;
+  backdrop-filter:blur(4px);
+}
+.carousel-btn:hover{background:#fff}
+.carousel-btn.prev{left:.5rem}
+.carousel-btn.next{right:.5rem}
+.carousel-dots{
+  position:absolute;bottom:.5rem;left:50%;transform:translateX(-50%);
+  display:flex;gap:.3rem;
+}
+.carousel-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:rgba(255,255,255,.5);cursor:pointer;
+  transition:background .2s;border:none;padding:0;
+}
+.carousel-dot.active{background:#fff}
+.carousel-zoom-hint{
+  position:absolute;top:.5rem;right:.5rem;
+  background:rgba(0,0,0,.3);color:rgba(255,255,255,.9);
+  font-size:.55rem;letter-spacing:.08em;padding:.2rem .45rem;
+  backdrop-filter:blur(4px);pointer-events:none;
+}
+
+/* Hotel info panel */
+.hotel-info{
+  padding:1.5rem 1.4rem;
+  display:flex;flex-direction:column;
+  gap:.35rem;flex:1;
+}
+.hotel-badge{
+  display:inline-block;
+  font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);border:1px solid var(--gold);
+  padding:.15rem .45rem;margin-bottom:.2rem;width:fit-content;
+}
+.hotel-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;color:var(--sage);line-height:1.15;margin-bottom:.1rem;
+}
+.hotel-tagline{
+  font-size:.72rem;color:var(--text);
+  font-style:italic;margin-bottom:.4rem;
+}
+.hotel-desc{
+  font-size:.76rem;line-height:1.8;color:var(--text);margin-bottom:.6rem;
+}
+.hotel-amenities{
+  display:flex;flex-wrap:wrap;gap:.3rem;
+  margin-bottom:.6rem;
+}
+.hotel-amenity{
+  font-size:.58rem;letter-spacing:.06em;
+  background:#f5f5f2;color:var(--sage);
+  padding:.18rem .5rem;border:1px solid var(--mist);
+}
+.hotel-nearby{
+  font-size:.72rem;color:#aaa;margin-bottom:.6rem;
+  line-height:1.7;
+}
+.hotel-meta{display:flex;flex-direction:column;gap:.25rem;margin-bottom:.9rem}
+.hotel-meta-row{
+  display:flex;align-items:center;gap:.45rem;
+  font-size:.72rem;color:var(--text);
+}
+.hotel-meta-icon{font-size:.8rem;width:1rem;text-align:center;flex-shrink:0}
+.hotel-meta-row a{color:var(--sage);text-decoration:none}
+.hotel-meta-row a:hover{text-decoration:underline}
+.hotel-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:auto}
+
+.btn{
+  display:inline-block;padding:.65rem 1.8rem;
+  border:1px solid currentColor;
+  font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;
+  transition:all .2s;font-family:'Lato',sans-serif;background:none;
+}
+.btn-sage{color:var(--sage)}
+.btn-sage:hover{background:var(--sage);color:#fff;border-color:var(--sage)}
+.btn-sm{padding:.4rem 1rem;font-size:.58rem}
+
+/* ── Lightbox ── */
+.lightbox{
+  display:none;position:fixed;inset:0;z-index:1000;
+  background:rgba(0,0,0,.92);
+  align-items:center;justify-content:center;
+  flex-direction:column;
+}
+.lightbox.open{display:flex}
+.lightbox-img{
+  max-width:92vw;max-height:85vh;
+  object-fit:contain;display:block;
+  box-shadow:0 8px 60px rgba(0,0,0,.6);
+}
+.lightbox-close{
+  position:absolute;top:1.2rem;right:1.5rem;
+  background:none;border:none;color:rgba(255,255,255,.7);
+  font-size:2rem;cursor:pointer;line-height:1;
+  transition:color .2s;
+}
+.lightbox-close:hover{color:#fff}
+.lightbox-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,.15);border:none;
+  color:#fff;font-size:2rem;cursor:pointer;
+  width:50px;height:50px;display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+.lightbox-nav:hover{background:rgba(255,255,255,.3)}
+.lightbox-nav.lb-prev{left:1rem}
+.lightbox-nav.lb-next{right:1rem}
+.lightbox-caption{
+  color:rgba(255,255,255,.55);font-size:.7rem;
+  letter-spacing:.12em;margin-top:1rem;text-align:center;
+}
+.lightbox-counter{
+  color:rgba(255,255,255,.4);font-size:.65rem;
+  margin-top:.3rem;letter-spacing:.1em;
+}
+
+@media(max-width:750px){
+  .hotels-grid{grid-template-columns:1fr}
+  .hotel-carousel{height:220px}
+  .quito-fact{min-width:100px}
+}
+
+/* ── Qué hacer section ── */
+.place-card{
+  border:1px solid var(--mist);background:var(--white);
+  display:grid;grid-template-columns:55% 45%;
+  transition:box-shadow .3s;margin-bottom:2rem;
+}
+.place-card:hover{box-shadow:0 12px 48px rgba(0,0,0,.08)}
+
+.place-carousel{
+  position:relative;overflow:hidden;
+  min-height:360px;height:100%;cursor:zoom-in;
+}
+/* taller carousel for place cards — fills full card height */
+.place-carousel .carousel-track{height:100%;min-height:inherit}
+.place-carousel .carousel-slide{min-width:100%;height:100%;min-height:inherit;flex-shrink:0;position:relative}
+.place-carousel .carousel-slide img{width:100%;height:100%;min-height:inherit;object-fit:cover;display:block;position:absolute;inset:0}
+
+.carousel-credit-badge{
+  position:absolute;bottom:.6rem;left:.6rem;z-index:3;
+  font-size:.58rem;letter-spacing:.06em;
+  background:rgba(0,0,0,.42);color:rgba(255,255,255,.9);
+  padding:.2rem .5rem;backdrop-filter:blur(4px);
+  text-decoration:none;transition:color .2s,opacity .2s;
+}
+.carousel-credit-badge:hover{color:#fff}
+.carousel-credit-badge.hidden{opacity:0;pointer-events:none}
+
+.place-info{
+  padding:2rem 1.8rem;
+  display:flex;flex-direction:column;gap:.45rem;
+}
+.place-badge{
+  display:inline-block;
+  font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);border:1px solid var(--gold);
+  padding:.16rem .48rem;width:fit-content;margin-bottom:.2rem;
+}
+.place-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;color:var(--sage);line-height:1.1;margin-bottom:.1rem;
+}
+.place-tagline{
+  font-size:.75rem;color:var(--text);font-style:italic;margin-bottom:.4rem;
+}
+.place-desc{
+  font-size:.8rem;line-height:1.85;color:var(--text);margin-bottom:.5rem;
+}
+.place-highlights{
+  display:flex;flex-direction:column;gap:.45rem;margin-bottom:.6rem;
+}
+.place-highlight{
+  display:flex;align-items:flex-start;gap:.55rem;
+  font-size:.78rem;color:var(--text);line-height:1.5;
+}
+.place-hi-icon{flex-shrink:0;font-size:.9rem;margin-top:.05rem}
+.place-hi-label{font-weight:400;color:var(--dark)}
+
+.place-tip{
+  font-size:.72rem;color:var(--sage-mid);
+  font-style:italic;border-left:2px solid var(--mist);
+  padding-left:.7rem;margin-top:.2rem;line-height:1.6;
+}
+.place-coming-soon{
+  text-align:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;font-style:italic;
+  color:#ccc;margin-top:1.5rem;letter-spacing:.06em;
+}
+
+@media(max-width:750px){
+  .place-card{grid-template-columns:1fr}
+  .place-carousel{height:260px}
+}
+
+/* ── Registry ── */
+.registry-photo{
+  width:100%;margin:0 auto 3rem;
+  position:relative;
+}
+.registry-photo::before{
+  content:'';position:absolute;
+  top:-10px;left:-10px;right:-10px;bottom:-10px;
+  border:1px solid rgba(188,166,112,.35);
+  pointer-events:none;
+}
+.registry-photo img{width:100%;height:auto;display:block}
+
+.registry-intro-text{
+  text-align:center;font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1rem,2vw,1.2rem);font-weight:300;font-style:italic;
+  line-height:1.9;color:var(--text);max-width:680px;
+  margin:0 auto 1rem;
+}
+.registry-bank-label{
+  text-align:center;font-size:.65rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--tan);margin-bottom:2rem;
+}
+
+.bank-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1.2rem;max-width:860px;margin:0 auto;
+}
+.bank-card{
+  border:1px solid var(--mist);padding:1.8rem 1.6rem;
+  background:var(--white);transition:box-shadow .25s;
+}
+.bank-card:hover{box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.bank-flag{font-size:1.6rem;margin-bottom:.6rem}
+.bank-country{
+  font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.35rem;
+}
+.bank-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;color:var(--sage);margin-bottom:.9rem;
+}
+.bank-divider{height:1px;background:var(--mist);margin:.6rem 0}
+.bank-row{display:flex;flex-direction:column;gap:.1rem;margin-bottom:.5rem}
+.bank-lbl{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:#bbb}
+.bank-val{
+  font-size:.85rem;color:var(--dark);
+  font-family:'Cormorant Garamond',serif;letter-spacing:.03em;
+}
+.bank-beneficiary{
+  font-size:.72rem;color:var(--text);margin-top:.5rem;
+  font-style:italic;line-height:1.5;
+}
+.bank-coming{
+  font-size:.72rem;color:#c0bdb8;font-style:italic;
+  letter-spacing:.04em;margin-top:.2rem;
+}
+
+.registry-note{
+  text-align:center;margin-top:2.5rem;
+  font-size:.75rem;color:#bbb;font-style:italic;
+}
+
+/* ── Fade-in on scroll ── */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .65s,transform .65s}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ── Footer ── */
+footer{
+  background:var(--sage);color:rgba(255,255,255,.82);
+  text-align:center;padding:4rem 2rem;
+}
+.footer-script{
+  font-family:'Great Vibes',cursive;
+  font-size:3.2rem;color:#fff;display:block;margin-bottom:.4rem;
+}
+.footer-date-line{
+  font-size:.65rem;letter-spacing:.28em;
+  text-transform:uppercase;opacity:.7;margin-bottom:2rem;
+}
+.footer-divider{width:40px;height:1px;background:rgba(255,255,255,.3);margin:.8rem auto}
+.footer-tagline{font-size:.72rem;opacity:.5;letter-spacing:.08em}
+
+/* ── Responsive ── */
+@media(max-width:800px){
+  #navbar{padding:1rem 1.2rem}
+  .nav-links{
+    display:none;position:fixed;
+    top:60px;left:0;right:0;
+    background:rgba(248,246,242,.98);
+    flex-direction:column;align-items:center;padding:2.5rem;
+    gap:2rem;border-bottom:1px solid var(--mist);
+    backdrop-filter:blur(12px);
+  }
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .botanical-tl,.botanical-tr{width:200px}
+  .botanical-bl,.botanical-br{width:160px}
+  .accommodation-card{flex-direction:column;gap:.8rem}
+  .hero-photo::before{display:none}
+  .registry-photo::before{display:none}
+}
+@media(max-width:500px){
+  .hero-name{letter-spacing:.02em}
+}
+</style>
+</head>
+<body>
+
+<!-- ──────────── NAV ──────────── -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">M & D</a>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home"     data-i18n="nav_home"     onclick="closeMenu()">Inicio</a></li>
+    <li><a href="#schedule" data-i18n="nav_schedule" onclick="closeMenu()">Programa</a></li>
+    <li><a href="#travel"      data-i18n="nav_travel"      onclick="closeMenu()">Viaje</a></li>
+    <li><a href="#quehacemos" data-i18n="nav_quehacemos" onclick="closeMenu()">Quito</a></li>
+    <li><a href="#registry"   data-i18n="nav_registry"   onclick="closeMenu()">Regalos</a></li>
+  </ul>
+
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <button class="lang-btn"        onclick="setLang('en')">EN</button>
+    <button class="lang-btn"        onclick="setLang('pt')">PT</button>
+  </div>
+</nav>
+
+<!-- ──────────── HOME ──────────── -->
+<section id="home">
+
+  <!-- Botanical corner decorations -->
+  <svg class="botanical-tl" viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M10 10 Q60 80 140 60 Q180 50 200 20" stroke="#677b69" stroke-width="1.5" fill="none"/>
+    <ellipse cx="80"  cy="55"  rx="32" ry="14" transform="rotate(-25 80  55)"  fill="#677b69" opacity=".7"/>
+    <ellipse cx="130" cy="40"  rx="28" ry="11" transform="rotate(-10 130 40)"  fill="#677b69" opacity=".6"/>
+    <ellipse cx="170" cy="25"  rx="22" ry="10" transform="rotate(10  170 25)"  fill="#677b69" opacity=".5"/>
+    <ellipse cx="50"  cy="80"  rx="20" ry="9"  transform="rotate(-40 50  80)"  fill="#88a182" opacity=".5"/>
+    <path d="M20 20 Q80 120 180 100 Q220 90 240 50" stroke="#677b69" stroke-width="1" fill="none"/>
+    <ellipse cx="100" cy="100" rx="26" ry="11" transform="rotate(-20 100 100)" fill="#88a182" opacity=".5"/>
+    <ellipse cx="160" cy="85"  rx="22" ry="9"  transform="rotate(-5  160 85)"  fill="#677b69" opacity=".45"/>
+    <ellipse cx="210" cy="65"  rx="18" ry="8"  transform="rotate(15  210 65)"  fill="#88a182" opacity=".4"/>
+    <circle cx="45"  cy="110" r="4"   fill="#bca670" opacity=".6"/>
+    <circle cx="90"  cy="130" r="3"   fill="#bca670" opacity=".5"/>
+    <circle cx="135" cy="115" r="3.5" fill="#bca670" opacity=".55"/>
+  </svg>
+
+  <svg class="botanical-tr" viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M10 10 Q60 80 140 60 Q180 50 200 20" stroke="#677b69" stroke-width="1.5" fill="none"/>
+    <ellipse cx="80"  cy="55"  rx="32" ry="14" transform="rotate(-25 80  55)"  fill="#677b69" opacity=".6"/>
+    <ellipse cx="130" cy="40"  rx="28" ry="11" transform="rotate(-10 130 40)"  fill="#677b69" opacity=".55"/>
+    <ellipse cx="170" cy="25"  rx="22" ry="10" transform="rotate(10  170 25)"  fill="#677b69" opacity=".5"/>
+    <ellipse cx="50"  cy="80"  rx="20" ry="9"  transform="rotate(-40 50  80)"  fill="#88a182" opacity=".45"/>
+    <circle cx="45"  cy="110" r="4"   fill="#b59a6b" opacity=".5"/>
+    <circle cx="90"  cy="130" r="3"   fill="#b59a6b" opacity=".45"/>
+    <path d="M30 30 Q100 130 200 110" stroke="#88a182" stroke-width="1" fill="none"/>
+    <ellipse cx="120" cy="115" rx="24" ry="10" transform="rotate(-15 120 115)" fill="#88a182" opacity=".4"/>
+  </svg>
+
+  <svg class="botanical-bl" viewBox="0 0 320 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M10 290 Q70 220 150 240 Q190 250 200 280" stroke="#677b69" stroke-width="1.5" fill="none"/>
+    <ellipse cx="80"  cy="245" rx="28" ry="12" transform="rotate(20 80  245)" fill="#677b69" opacity=".6"/>
+    <ellipse cx="140" cy="250" rx="24" ry="10" transform="rotate(5  140 250)" fill="#88a182" opacity=".5"/>
+    <circle cx="60"  cy="220" r="3.5" fill="#bca670" opacity=".5"/>
+    <circle cx="120" cy="210" r="3"   fill="#bca670" opacity=".45"/>
+  </svg>
+
+  <svg class="botanical-br" viewBox="0 0 320 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M10 290 Q70 220 150 240 Q190 250 200 280" stroke="#677b69" stroke-width="1.5" fill="none"/>
+    <ellipse cx="80"  cy="245" rx="28" ry="12" transform="rotate(20 80  245)" fill="#677b69" opacity=".55"/>
+    <ellipse cx="140" cy="250" rx="24" ry="10" transform="rotate(5  140 250)" fill="#88a182" opacity=".45"/>
+    <circle cx="60"  cy="220" r="3.5" fill="#b59a6b" opacity=".45"/>
+    <circle cx="120" cy="210" r="3"   fill="#b59a6b" opacity=".4"/>
+  </svg>
+
+  <!-- Names -->
+  <div class="hero-couple">
+    <span class="hero-name">Maria</span>
+    <span class="hero-amp">&amp;</span>
+    <span class="hero-name">Daniel</span>
+  </div>
+
+  <!-- Date & Location -->
+  <div class="hero-date-wrap">
+    <div class="hero-date">19 · Diciembre · 2026</div>
+    <div class="hero-location">Quito, Ecuador</div>
+  </div>
+
+  <!-- Floral divider -->
+  <div class="floral-divider">
+    <div class="floral-line"></div>
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="11" cy="11" r="2.5" fill="#bca670"/>
+      <ellipse cx="11" cy="5"  rx="2" ry="3.5" fill="#677b69" opacity=".7"/>
+      <ellipse cx="11" cy="17" rx="2" ry="3.5" fill="#677b69" opacity=".7"/>
+      <ellipse cx="5"  cy="11" rx="3.5" ry="2" fill="#677b69" opacity=".7"/>
+      <ellipse cx="17" cy="11" rx="3.5" ry="2" fill="#677b69" opacity=".7"/>
+    </svg>
+    <div class="floral-line"></div>
+  </div>
+
+  <!-- Countdown -->
+  <div class="countdown-wrap">
+    <span class="countdown-number" id="countdownDays">—</span>
+    <span class="countdown-sublabel" data-i18n="countdown_label">días para la boda</span>
+  </div>
+
+  <!-- Hero Photo -->
+  <div class="hero-photo">
+    <img src="main.jpg" alt="Maria & Daniel">
+  </div>
+
+</section>
+
+<!-- ──────────── SCHEDULE ──────────── -->
+<section id="schedule" class="section section--alt">
+  <div class="section-inner">
+    <p class="eyebrow" data-i18n="schedule_eyebrow">19 de Diciembre, 2026</p>
+    <h2 class="section-title" data-i18n="schedule_title">El Programa</h2>
+    <p class="section-lead" data-i18n="schedule_lead">Estamos muy emocionados de celebrar este día tan especial con ustedes. Aquí está nuestro programa de boda.</p>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">2:30 PM</div>
+        <div class="timeline-event" data-i18n="ev_ceremony">Ceremonia Religiosa</div>
+        <div class="timeline-venue">Santuario de Schoenstatt, Alangasí</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time" data-i18n="ev_shuttle_time">Después de la ceremonia</div>
+        <div class="timeline-event" data-i18n="ev_shuttle">Traslado en Shuttle</div>
+        <div class="timeline-venue">Quinta Villa Fiorenza, Puembo</div>
+        <div class="timeline-note" data-i18n="ev_shuttle_note">Transporte gratuito disponible para todos los invitados</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">5:30 PM</div>
+        <div class="timeline-event" data-i18n="ev_cocktail">Hora del Cóctel</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">6:00 PM</div>
+        <div class="timeline-event" data-i18n="ev_photos">Fotos & Momentos al Atardecer</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">8:00 PM</div>
+        <div class="timeline-event" data-i18n="ev_dinner">Recepción de Cena</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">9:00 PM – 1:30 AM</div>
+        <div class="timeline-event" data-i18n="ev_party">Fiesta & Baile</div>
+      </div>
+
+    </div>
+
+    <p class="fade-in" style="text-align:center;font-size:.84rem;color:#aaa;margin-top:3rem;font-style:italic;line-height:1.9;max-width:560px;margin-left:auto;margin-right:auto" data-i18n="schedule_closing">
+      Gracias por ser parte de un momento tan importante en nuestras vidas. ¡Estamos muy emocionados de celebrar juntos!
+    </p>
+  </div>
+</section>
+
+<!-- ──────────── TRAVEL ──────────── -->
+<section id="travel" class="section section--sage">
+  <div class="section-inner">
+    <p class="eyebrow" data-i18n="travel_eyebrow">Cómo llegar</p>
+    <h2 class="section-title" data-i18n="travel_title">Viaje & Alojamiento</h2>
+
+    <!-- ── Quito block at top ── -->
+    <h3 class="quito-hero-title fade-in">Quito</h3>
+
+    <div class="city-photo-wrap fade-in" onclick="lbOpenSingle('Quito_Foto_Boda.jpg','Quito, Ecuador')">
+      <img src="Quito_Foto_Boda.jpg" alt="Quito, Ecuador">
+      <a class="city-photo-credit"
+         href="https://www.instagram.com/p/DVZpHDMETpI/?igsh=MTJpbThzNzZhemo3eA%3D%3D%2Fmedia%2F%3Fsize%3Dl"
+         target="_blank" rel="noopener" onclick="event.stopPropagation()">📷 Instagram</a>
+    </div>
+
+    <div class="quito-facts fade-in">
+      <div class="quito-fact">
+        <span class="qf-value">2.850 m</span>
+        <span class="qf-label" data-i18n="qf_altitude">Altitud sobre el mar</span>
+      </div>
+      <div class="quito-fact">
+        <span class="qf-value">~22 °C</span>
+        <span class="qf-label" data-i18n="qf_temp">Temperatura en diciembre</span>
+      </div>
+      <div class="quito-fact">
+        <span class="qf-value">0°</span>
+        <span class="qf-label" data-i18n="qf_equator">Línea del Ecuador</span>
+      </div>
+      <div class="quito-fact">
+        <span class="qf-value">UNESCO</span>
+        <span class="qf-label" data-i18n="qf_heritage">Patrimonio de la Humanidad</span>
+      </div>
+    </div>
+
+    <p class="section-lead fade-in" style="margin-top:2.5rem" data-i18n="tr_quito_blurb">
+      Recomendamos alojarse en Quito o sus alrededores. La ciudad combina una arquitectura colonial espectacular con modernos barrios gastronómicos, naturaleza volcánica a su alrededor y un clima primaveral durante todo el año. Diciembre es especialmente festivo y luminoso — el momento perfecto para visitarla.
+    </p>
+
+    <!-- ── How to get here ── -->
+    <p class="eyebrow fade-in" style="margin-top:1rem" data-i18n="travel_flights_eyebrow">Cómo llegar desde…</p>
+
+    <div class="travel-grid">
+      <div class="travel-card fade-in">
+        <div class="travel-icon">✈️</div>
+        <div class="travel-card-title" data-i18n="tr_eu_title">Desde Europa</div>
+        <div class="travel-card-text" data-i18n="tr_eu_text">La forma más conveniente es el vuelo directo de Iberia desde Madrid a Quito (aprox. 11 horas). Otra excelente opción es el vuelo directo de KLM desde Ámsterdam a Quito.</div>
+      </div>
+      <div class="travel-card fade-in">
+        <div class="travel-icon">✈️</div>
+        <div class="travel-card-title" data-i18n="tr_us_title">Desde EE. UU.</div>
+        <div class="travel-card-text" data-i18n="tr_us_text">La ruta más conveniente es el vuelo directo desde Miami a Quito, con una duración de aproximadamente 4–5 horas.</div>
+      </div>
+      <div class="travel-card fade-in">
+        <div class="travel-icon">✈️</div>
+        <div class="travel-card-title" data-i18n="tr_ba_title">Desde Buenos Aires</div>
+        <div class="travel-card-text" data-i18n="tr_ba_text">Hay vuelos directos desde Buenos Aires a Quito con una duración aproximada de 6 horas.</div>
+      </div>
+    </div>
+
+    <!-- ── Hotel Stays ── -->
+    <div class="hotels-section">
+      <p class="hotels-section-label fade-in" data-i18n="hotels_eyebrow">Donde alojarse</p>
+      <h3 class="hotels-section-title fade-in" data-i18n="hotels_title">Alojamientos recomendados cerca de la boda</h3>
+
+      <div class="hotels-grid">
+
+        <!-- San José de Puembo -->
+        <div class="hotel-card fade-in">
+          <div class="hotel-carousel" id="carousel-sanjose"
+               onclick="lbOpenCarousel('sanjose')"
+               title="Ver en pantalla completa">
+            <div class="carousel-track" id="track-sanjose">
+              <div class="carousel-slide"><img src="Hosteria San Jose de Puembo 1.jpeg" alt="San José de Puembo"></div>
+              <div class="carousel-slide"><img src="Hosteria San Jose de Puembo 2.jpeg" alt="San José de Puembo"></div>
+              <div class="carousel-slide"><img src="Hosteria San Jose de Puembo 3.jpeg" alt="San José de Puembo"></div>
+              <div class="carousel-slide"><img src="Hosteria San Jose de Puembo 4.jpeg" alt="San José de Puembo"></div>
+            </div>
+            <button class="carousel-btn prev" onclick="event.stopPropagation();carouselMove('sanjose',-1)" aria-label="Anterior">&#8249;</button>
+            <button class="carousel-btn next" onclick="event.stopPropagation();carouselMove('sanjose', 1)" aria-label="Siguiente">&#8250;</button>
+            <div class="carousel-dots" id="dots-sanjose"></div>
+            <span class="carousel-zoom-hint" data-i18n="zoom_hint">⤢ ampliar</span>
+          </div>
+          <div class="hotel-info">
+            <span class="hotel-badge" data-i18n="hotel_badge_closest">⭐ A minutos caminando del lugar</span>
+            <div class="hotel-name">Hostería San José de Puembo</div>
+            <div class="hotel-tagline" data-i18n="sanjose_tagline">Hacienda colonial del siglo XVII · Puembo</div>
+            <div class="hotel-desc" data-i18n="sanjose_desc">A 15 min del aeropuerto, el San José de Puembo es un refugio elegante que fusiona la comodidad moderna con el encanto colonial. La casa principal data del siglo XVII con paredes de adobe, columnas de capulí y bellas pinturas coloniales — a pasos de nuestra celebración.</div>
+            <div class="hotel-amenities">
+              <span class="hotel-amenity" data-i18n="am_pool">🏊 Piscina</span>
+              <span class="hotel-amenity" data-i18n="am_restaurant">🍽 Restaurante</span>
+              <span class="hotel-amenity" data-i18n="am_gardens">🌿 Jardines</span>
+              <span class="hotel-amenity" data-i18n="am_events">🎉 Salones de eventos</span>
+            </div>
+            <div class="hotel-meta">
+              <div class="hotel-meta-row">
+                <span class="hotel-meta-icon">📍</span>
+                <a href="https://maps.app.goo.gl/LYT5NfQuXbzUGmGEA" target="_blank" rel="noopener" data-i18n="hotel_map">Ver en Google Maps</a>
+              </div>
+              <div class="hotel-meta-row">
+                <span class="hotel-meta-icon">🌐</span>
+                <a href="http://www.gardenhotelsanjose.com/" target="_blank" rel="noopener">gardenhotelsanjose.com</a>
+              </div>
+              <div class="hotel-meta-row">
+                <span class="hotel-meta-icon">📞</span>
+                <a href="tel:+59322390264">+593 2 239 0264</a>
+              </div>
+            </div>
+            <div class="hotel-actions">
+              <a href="http://www.gardenhotelsanjose.com/" target="_blank" rel="noopener" class="btn btn-sage btn-sm" data-i18n="hotel_website_btn">Ver sitio web</a>
+              <a href="https://maps.app.goo.gl/LYT5NfQuXbzUGmGEA" target="_blank" rel="noopener" class="btn btn-sage btn-sm" data-i18n="hotel_map_btn">Mapa</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ilalo Garden -->
+        <div class="hotel-card fade-in">
+          <div class="hotel-carousel" id="carousel-ilalo"
+               onclick="lbOpenCarousel('ilalo')"
+               title="Ver en pantalla completa">
+            <div class="carousel-track" id="track-ilalo">
+              <div class="carousel-slide"><img src="Ilalo Garden 1.jpeg" alt="Ilalo Garden"></div>
+              <div class="carousel-slide"><img src="Ilalo Garden 2.jpeg" alt="Ilalo Garden"></div>
+              <div class="carousel-slide"><img src="Ilalo Garden 3.jpeg" alt="Ilalo Garden"></div>
+              <div class="carousel-slide"><img src="Ilalo Garden 4.jpeg" alt="Ilalo Garden"></div>
+            </div>
+            <button class="carousel-btn prev" onclick="event.stopPropagation();carouselMove('ilalo',-1)" aria-label="Anterior">&#8249;</button>
+            <button class="carousel-btn next" onclick="event.stopPropagation();carouselMove('ilalo', 1)" aria-label="Siguiente">&#8250;</button>
+            <div class="carousel-dots" id="dots-ilalo"></div>
+            <span class="carousel-zoom-hint" data-i18n="zoom_hint">⤢ ampliar</span>
+          </div>
+          <div class="hotel-info">
+            <span class="hotel-badge" data-i18n="hotel_badge_tumbaco">🌿 Junto al centro de Tumbaco</span>
+            <div class="hotel-name">Ilalo Garden Hotel</div>
+            <div class="hotel-tagline" data-i18n="ilalo_tagline">Hotel boutique & restaurante · Tumbaco</div>
+            <div class="hotel-desc" data-i18n="ilalo_desc">Un oasis de tranquilidad a minutos del vibrante centro de Tumbaco. Cuenta con el restaurante <em>Ilalo Honest Eating</em>, especializado en cocina vegetariana y con servicio de desayuno, almuerzo y cena. Terraza, jardín y bar completan una estancia perfecta para descansar entre los festejos.</div>
+            <div class="hotel-amenities">
+              <span class="hotel-amenity" data-i18n="am_restaurant">🍽 Restaurante vegetariano</span>
+              <span class="hotel-amenity" data-i18n="am_bar">🍸 Bar & Lounge</span>
+              <span class="hotel-amenity" data-i18n="am_terrace">☀️ Terraza</span>
+              <span class="hotel-amenity" data-i18n="am_gardens">🌿 Jardín</span>
+            </div>
+            <div class="hotel-nearby" data-i18n="ilalo_nearby">
+              📍 Río Chiche: 1.5 km · Scala Shopping: 2.3 km · Quicentro: 21.7 km · Parque La Carolina: 15.7 km
+            </div>
+            <div class="hotel-meta">
+              <div class="hotel-meta-row">
+                <span class="hotel-meta-icon">📍</span>
+                <a href="https://maps.app.goo.gl/xdppLfF26dAF1jCW9" target="_blank" rel="noopener" data-i18n="hotel_map">Ver en Google Maps</a>
+              </div>
+              <div class="hotel-meta-row">
+                <span class="hotel-meta-icon">🌐</span>
+                <a href="https://www.hotel-ilalo.com" target="_blank" rel="noopener">hotel-ilalo.com</a>
+              </div>
+              <div class="hotel-meta-row">
+                <span class="hotel-meta-icon">📞</span>
+                <a href="tel:+593995036037">+593 99 503 6037</a>
+              </div>
+            </div>
+            <div class="hotel-actions">
+              <a href="https://www.hotel-ilalo.com" target="_blank" rel="noopener" class="btn btn-sage btn-sm" data-i18n="hotel_website_btn">Ver sitio web</a>
+              <a href="https://maps.app.goo.gl/xdppLfF26dAF1jCW9" target="_blank" rel="noopener" class="btn btn-sage btn-sm" data-i18n="hotel_map_btn">Mapa</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /hotels-grid -->
+    </div><!-- /hotels-section -->
+  </div>
+</section>
+
+<!-- ── Lightbox ── -->
+<div class="lightbox" id="lightbox" onclick="lbClose()">
+  <button class="lightbox-close" onclick="lbClose()" aria-label="Cerrar">&#10005;</button>
+  <button class="lightbox-nav lb-prev" onclick="event.stopPropagation();lbMove(-1)" aria-label="Anterior">&#8249;</button>
+  <img class="lightbox-img" id="lbImg" src="" alt="">
+  <button class="lightbox-nav lb-next" onclick="event.stopPropagation();lbMove(1)" aria-label="Siguiente">&#8250;</button>
+  <div class="lightbox-caption" id="lbCaption"></div>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<!-- ──────────── QUÉ HACER ──────────── -->
+<section id="quehacemos" class="section section--sage">
+  <div class="section-inner">
+    <p class="eyebrow" data-i18n="qh_eyebrow">Quito te espera</p>
+    <h2 class="section-title" data-i18n="qh_title">Qué hacer en Quito</h2>
+    <p class="section-lead" data-i18n="qh_lead">Aprovechen su visita para descubrir una ciudad que sorprende en cada esquina. Aquí están nuestros lugares favoritos — los mismos que queremos compartir con ustedes.</p>
+
+    <!-- ── Centro Histórico ── -->
+    <div class="place-card fade-in">
+
+      <div class="place-carousel" id="carousel-ch"
+           onclick="lbOpenCarousel('ch')"
+           title="Ver en pantalla completa">
+        <div class="carousel-track" id="track-ch">
+          <div class="carousel-slide"><img src="centro historico 2.jpg"              alt="La Compañía de Jesús, Quito"></div>
+          <div class="carousel-slide"><img src="centro historico 3.jpg"              alt="Plaza de San Francisco, Quito"></div>
+          <div class="carousel-slide"><img src="centro historico 4.jpg"              alt="Calles navideñas, Centro Histórico de Quito"></div>
+          <div class="carousel-slide"><img src="centro historico 5.jpg"              alt="Basílica del Voto Nacional, Quito"></div>
+          <div class="carousel-slide"><img src="centro historico daniel y maria 1.jpeg" alt="Maria y Daniel en el Centro Histórico"></div>
+          <div class="carousel-slide"><img src="centro historico daniel y maria 2.jpeg" alt="Maria y Daniel en el tejado de La Catedral"></div>
+          <div class="carousel-slide"><img src="centro historico daniel y maria 3.jpeg" alt="Maria y Daniel en una capilla colonial"></div>
+        </div>
+        <button class="carousel-btn prev" onclick="event.stopPropagation();carouselMove('ch',-1)" aria-label="Anterior">&#8249;</button>
+        <button class="carousel-btn next" onclick="event.stopPropagation();carouselMove('ch', 1)" aria-label="Siguiente">&#8250;</button>
+        <div class="carousel-dots" id="dots-ch"></div>
+        <a class="carousel-credit-badge" id="credit-ch"
+           href="https://www.instagram.com/eddiegalvez_photo/"
+           target="_blank" rel="noopener"
+           onclick="event.stopPropagation()">📷 @eddiegalvez_photo</a>
+        <span class="carousel-zoom-hint" data-i18n="zoom_hint">⤢ ampliar</span>
+      </div>
+
+      <div class="place-info">
+        <span class="place-badge" data-i18n="ch_badge">🏛 Patrimonio UNESCO · Siglo XVI</span>
+        <div class="place-name" data-i18n="ch_name">Centro Histórico</div>
+        <div class="place-tagline" data-i18n="ch_tagline">El centro histórico mejor conservado de América Latina</div>
+        <div class="place-desc" data-i18n="ch_desc">Declarado Patrimonio de la Humanidad por la UNESCO en 1978, el Centro Histórico de Quito es un laberinto de plazas empedradas, conventos barrocos e iglesias doradas que cuentan 500 años de historia. Caminar por sus calles es viajar en el tiempo.</div>
+
+        <div class="place-highlights">
+          <div class="place-highlight">
+            <span class="place-hi-icon">⛪</span>
+            <span><span class="place-hi-label" data-i18n="ch_h1_title">La Compañía de Jesús</span> — <span data-i18n="ch_h1_desc">el altar mayor más ornamentado de América, recubierto de oro y tallas barrocas.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span class="place-hi-icon">🏟</span>
+            <span><span class="place-hi-label" data-i18n="ch_h2_title">Plaza de San Francisco</span> — <span data-i18n="ch_h2_desc">la plaza colonial más grande de Sudamérica, con su imponente convento franciscano del siglo XVI.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span class="place-hi-icon">🗼</span>
+            <span><span class="place-hi-label" data-i18n="ch_h3_title">Basílica del Voto Nacional</span> — <span data-i18n="ch_h3_desc">subir a sus torres neogóticas ofrece la mejor vista panorámica de la ciudad.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span class="place-hi-icon">🌙</span>
+            <span><span class="place-hi-label" data-i18n="ch_h4_title">En diciembre</span> — <span data-i18n="ch_h4_desc">las calles se visten de luces navideñas y la Virgen del Panecillo ilumina la noche desde su colina.</span></span>
+          </div>
+        </div>
+
+        <p class="place-tip" data-i18n="ch_tip">💡 Visítenlo de mañana para evitar las multitudes y aprovechen la luz dorada de las primeras horas. Un guía local lo hace aún más especial.</p>
+      </div>
+    </div>
+
+    <p class="place-coming-soon fade-in" data-i18n="qh_more">✦ &nbsp; Más lugares próximamente &nbsp; ✦</p>
+  </div>
+</section>
+
+<!-- ──────────── REGISTRY ──────────── -->
+<section id="registry" class="section section--alt">
+  <div class="section-inner">
+    <p class="eyebrow" data-i18n="reg_eyebrow">Regalos</p>
+    <h2 class="section-title" data-i18n="reg_title">Luna de Miel</h2>
+
+    <!-- Photo -->
+    <div class="registry-photo fade-in">
+      <img src="present.jpg" alt="Regalo de boda">
+    </div>
+
+    <!-- Intro text -->
+    <p class="registry-intro-text fade-in" data-i18n="reg_intro">
+      Nos hace mucha ilusión que nos acompañen en este día tan especial para nosotros. Les agradeceríamos con todo nuestro corazón si desean contribuir para nuestra luna de miel. Pueden hacerlo a través de nuestras cuentas bancarias:
+    </p>
+
+    <p class="registry-bank-label fade-in" data-i18n="reg_bank_label">Cuentas bancarias</p>
+
+    <!-- Bank account cards -->
+    <div class="bank-grid">
+
+      <div class="bank-card fade-in">
+        <div class="bank-flag">🇪🇨</div>
+        <div class="bank-country">Ecuador</div>
+        <div class="bank-name">Banco Procredit S.A.</div>
+        <div class="bank-divider"></div>
+        <div class="bank-coming" data-i18n="bank_soon">🔧 Detalles próximamente</div>
+      </div>
+
+      <div class="bank-card fade-in">
+        <div class="bank-flag">🇪🇺</div>
+        <div class="bank-country">Europa</div>
+        <div class="bank-name">Revolut Bank</div>
+        <div class="bank-divider"></div>
+        <div class="bank-coming" data-i18n="bank_soon">🔧 Detalles próximamente</div>
+      </div>
+
+      <div class="bank-card fade-in">
+        <div class="bank-flag">🇺🇸</div>
+        <div class="bank-country">Estados Unidos</div>
+        <div class="bank-name">JP Morgan</div>
+        <div class="bank-divider"></div>
+        <div class="bank-coming" data-i18n="bank_soon">🔧 Detalles próximamente</div>
+      </div>
+
+    </div>
+
+    <p class="registry-note fade-in" data-i18n="reg_note">Les pedimos con mucho cariño que no traigan regalos físicos a la celebración — el espacio en la maleta de vuelta a Madrid es nuestro mayor enemigo 🧳</p>
+  </div>
+</section>
+
+<!-- ──────────── FOOTER ──────────── -->
+<footer>
+  <span class="footer-script">Maria &amp; Daniel</span>
+  <div class="footer-date-line">19 · 12 · 2026 &nbsp;·&nbsp; Quito, Ecuador</div>
+  <div class="footer-divider"></div>
+  <div class="footer-tagline" data-i18n="footer_love">Hecho con amor ♥</div>
+</footer>
+
+
+<!-- ──────────── SCRIPTS ──────────── -->
+<script>
+/* ─── Translations ─── */
+const i18n = {
+es:{
+  nav_home:'Inicio', nav_schedule:'Programa', nav_travel:'Viaje', nav_registry:'Regalos',
+  countdown_label:'días para la boda',
+  schedule_eyebrow:'19 de Diciembre, 2026',
+  schedule_title:'El Programa',
+  schedule_lead:'Estamos muy emocionados de celebrar este día tan especial con ustedes. Aquí está nuestro programa de boda.',
+  ev_ceremony:'Ceremonia Religiosa',
+  ev_shuttle_time:'Después de la ceremonia',
+  ev_shuttle:'Traslado en Shuttle',
+  ev_shuttle_note:'Transporte gratuito disponible para todos los invitados',
+  ev_cocktail:'Hora del Cóctel',
+  ev_photos:'Fotos & Momentos al Atardecer',
+  ev_dinner:'Recepción de Cena',
+  ev_party:'Fiesta & Baile',
+  schedule_closing:'Gracias por ser parte de un momento tan importante en nuestras vidas. ¡Estamos muy emocionados de celebrar juntos!',
+  travel_eyebrow:'Cómo llegar',
+  travel_title:'Viaje & Alojamiento',
+  travel_lead:'Quito es una ciudad extraordinaria accesible desde cualquier rincón del mundo. Aquí van algunos consejos para que planeen su llegada con tranquilidad.',
+  tr_eu_title:'Desde Europa',
+  tr_eu_text:'La forma más conveniente es el vuelo directo de Iberia desde Madrid a Quito (aprox. 11 horas). Otra excelente opción es el vuelo directo de KLM desde Ámsterdam a Quito.',
+  tr_us_title:'Desde EE. UU.',
+  tr_us_text:'La ruta más conveniente es el vuelo directo desde Miami a Quito, con una duración de aproximadamente 4–5 horas.',
+  tr_ba_title:'Desde Buenos Aires',
+  tr_ba_text:'Hay vuelos directos desde Buenos Aires a Quito con una duración aproximada de 6 horas.',
+  tr_hotel_title:'Alojamiento recomendado: Cumbayá',
+  tr_hotel_text:'Recomendamos alojarse en Cumbayá, una de las zonas más seguras y agradables cercanas a Quito. Cuenta con excelentes restaurantes, bares, cafés y tiene fácil acceso tanto a la sede de la boda como al centro de la ciudad. Es el lugar perfecto para hacer de tu visita una experiencia completa.',
+  qf_altitude:'Altitud sobre el mar',
+  qf_temp:'Temperatura en diciembre',
+  qf_equator:'A metros del Ecuador',
+  qf_heritage:'Patrimonio de la Humanidad',
+  tr_quito_blurb:'Recomendamos alojarse en Quito o sus alrededores. La ciudad combina una arquitectura colonial espectacular con modernos barrios gastronómicos, naturaleza volcánica a su alrededor y un clima primaveral durante todo el año. Diciembre es especialmente festivo y luminoso — el momento perfecto para visitarla.',
+  hotels_eyebrow:'Donde alojarse',
+  hotels_title:'Alojamientos recomendados cerca de la boda',
+  hotel_badge_closest:'⭐ A minutos caminando del lugar',
+  hotel_badge_tumbaco:'🌿 Junto al centro de Tumbaco',
+  sanjose_tagline:'Hacienda colonial del siglo XVII · Puembo, Valle de Tumbaco',
+  sanjose_desc:'Situado a tan solo 15 minutos del Aeropuerto Internacional de Quito, el San José de Puembo es un refugio elegante que fusiona la comodidad moderna con el encanto colonial de su entorno sereno. La casa principal data del siglo XVII y conserva paredes de adobe, columnas de capulí y bellas pinturas coloniales — una experiencia única a pasos de nuestra celebración.',
+  ilalo_tagline:'Hotel boutique tranquilo · Tumbaco, Quito',
+  ilalo_desc:'A pocos minutos del vibrante centro de Tumbaco, el Ilalo Garden es un oasis de tranquilidad y serenidad. Combina habitaciones modernas y bien equipadas con un ambiente íntimo y natural, convirtiéndolo en el refugio ideal para descansar entre los festejos.',
+  travel_flights_eyebrow:'Cómo llegar desde…',
+  hotel_map:'Ver en Google Maps',
+  hotel_website_btn:'Ver sitio web',
+  hotel_map_btn:'Mapa',
+  zoom_hint:'⤢ ampliar',
+  am_pool:'🏊 Piscina',
+  am_restaurant:'🍽 Restaurante',
+  am_gardens:'🌿 Jardines',
+  am_events:'🎉 Salones de eventos',
+  am_bar:'🍸 Bar & Lounge',
+  am_terrace:'☀️ Terraza',
+  ilalo_nearby:'📍 Río Chiche: 1.5 km · Scala Shopping: 2.3 km · Quicentro: 21.7 km · Parque La Carolina: 15.7 km',
+  nav_quehacemos:'Quito',
+  qh_eyebrow:'Quito te espera',
+  qh_title:'Qué hacer en Quito',
+  qh_lead:'Aprovechen su visita para descubrir una ciudad que sorprende en cada esquina. Aquí están nuestros lugares favoritos — los mismos que queremos compartir con ustedes.',
+  ch_badge:'🏛 Patrimonio UNESCO · Siglo XVI',
+  ch_name:'Centro Histórico',
+  ch_tagline:'El centro histórico mejor conservado de América Latina',
+  ch_desc:'Declarado Patrimonio de la Humanidad por la UNESCO en 1978, el Centro Histórico de Quito es un laberinto de plazas empedradas, conventos barrocos e iglesias doradas que cuentan 500 años de historia. Caminar por sus calles es viajar en el tiempo.',
+  ch_h1_title:'La Compañía de Jesús',
+  ch_h1_desc:'el altar mayor más ornamentado de América, recubierto de oro y tallas barrocas.',
+  ch_h2_title:'Plaza de San Francisco',
+  ch_h2_desc:'la plaza colonial más grande de Sudamérica, con su imponente convento franciscano del siglo XVI.',
+  ch_h3_title:'Basílica del Voto Nacional',
+  ch_h3_desc:'subir a sus torres neogóticas ofrece la mejor vista panorámica de la ciudad.',
+  ch_h4_title:'En diciembre',
+  ch_h4_desc:'las calles se visten de luces navideñas y la Virgen del Panecillo ilumina la noche desde su colina.',
+  ch_tip:'💡 Visítenlo de mañana para evitar las multitudes y aprovechen la luz dorada de las primeras horas. Un guía local lo hace aún más especial.',
+  qh_more:'✦   Más lugares próximamente   ✦',
+  reg_eyebrow:'Regalos',
+  reg_title:'Luna de Miel',
+  reg_intro:'Nos hace mucha ilusión que nos acompañen en este día tan especial para nosotros. Les agradeceríamos con todo nuestro corazón si desean contribuir para nuestra luna de miel. Pueden hacerlo a través de nuestras cuentas bancarias:',
+  reg_bank_label:'Cuentas bancarias',
+  bank_type_savings:'Cuenta de Ahorros',
+  bank_beneficiary_label:'Beneficiario: D Enriquez Eguiguren & M Mendizabal',
+  bank_soon:'🔧 Detalles próximamente',
+  reg_note:'Les pedimos con mucho cariño que no traigan regalos físicos a la celebración — el espacio en la maleta de vuelta a Madrid es nuestro mayor enemigo 🧳',
+  footer_love:'Hecho con amor ♥',
+},
+en:{
+  nav_home:'Home', nav_schedule:'Schedule', nav_travel:'Travel', nav_registry:'Gifts',
+  countdown_label:'days until the wedding',
+  schedule_eyebrow:'December 19th, 2026',
+  schedule_title:'The Schedule',
+  schedule_lead:"We can't wait to celebrate this special day with you. Here's our wedding day schedule.",
+  ev_ceremony:'Religious Ceremony',
+  ev_shuttle_time:'After the ceremony',
+  ev_shuttle:'Shuttle to Venue',
+  ev_shuttle_note:'Free transportation available for all guests',
+  ev_cocktail:'Cocktail Hour',
+  ev_photos:'Photos & Sunset Moments',
+  ev_dinner:'Dinner Reception',
+  ev_party:'Party & Dancing',
+  schedule_closing:"Thank you for being part of such an important moment in our lives. We're so excited to celebrate together!",
+  travel_eyebrow:'Getting There',
+  travel_title:'Travel & Accommodation',
+  travel_lead:'Quito is easily accessible from major cities around the world. Here are some tips to help you plan your trip.',
+  tr_eu_title:'From Europe',
+  tr_eu_text:'The easiest way to travel from Europe is via the direct Iberia flight from Madrid to Quito (approx. 11 hours). Another great option is the direct KLM flight from Amsterdam to Quito.',
+  tr_us_title:'From the USA',
+  tr_us_text:'The most convenient route is usually the direct flight from Miami to Quito (around 4–5 hours).',
+  tr_ba_title:'From Buenos Aires',
+  tr_ba_text:'From Buenos Aires, there are direct flights to Quito taking approximately 6 hours.',
+  tr_hotel_title:'Recommended Stay: Cumbayá',
+  tr_hotel_text:"We recommend staying in Cumbayá, one of the safest and nicest areas near Quito, with great restaurants, bars, cafés, and easy access to the wedding venue and the city. It's the perfect place to make your visit a full experience.",
+  qf_altitude:'Altitude above sea level',
+  qf_temp:'Temperature in December',
+  qf_equator:'Meters from the Equator',
+  qf_heritage:'UNESCO World Heritage Site',
+  tr_quito_blurb:"We recommend staying in Quito or its surroundings. The city blends spectacular colonial architecture with vibrant gastronomic neighborhoods, volcanic nature all around, and spring-like weather all year long. December is especially festive and radiant — the perfect time to visit.",
+  hotels_eyebrow:'Where to stay',
+  hotels_title:'Recommended stays near the venue',
+  hotel_badge_closest:'⭐ Walking distance from the venue',
+  hotel_badge_tumbaco:'🌿 Next to Tumbaco town center',
+  sanjose_tagline:'17th-century colonial hacienda · Puembo, Tumbaco Valley',
+  sanjose_desc:'Located just 15 minutes from Quito International Airport, San José de Puembo is an elegant retreat that blends modern comfort with the charm of its serene colonial surroundings. The main house dates from the 17th century and preserves original adobe walls, capulí wood columns, and beautiful colonial paintings — a unique experience steps away from our celebration.',
+  ilalo_tagline:'Quiet boutique hotel · Tumbaco, Quito',
+  ilalo_desc:'Just minutes from the vibrant center of Tumbaco, Ilalo Garden is an oasis of calm and serenity. It combines modern, well-appointed rooms with an intimate natural setting — the ideal retreat to rest and recharge between celebrations.',
+  travel_flights_eyebrow:'Getting here from…',
+  hotel_map:'View on Google Maps',
+  hotel_website_btn:'Visit website',
+  hotel_map_btn:'Map',
+  zoom_hint:'⤢ expand',
+  am_pool:'🏊 Pool',
+  am_restaurant:'🍽 Restaurant',
+  am_gardens:'🌿 Gardens',
+  am_events:'🎉 Event halls',
+  am_bar:'🍸 Bar & Lounge',
+  am_terrace:'☀️ Terrace',
+  ilalo_nearby:'📍 Río Chiche: 1.5 km · Scala Mall: 2.3 km · Quicentro: 21.7 km · Parque La Carolina: 15.7 km',
+  nav_quehacemos:'Quito',
+  qh_eyebrow:'Quito awaits',
+  qh_title:'Things to do in Quito',
+  qh_lead:"Make the most of your visit and discover a city that surprises at every corner. Here are our favourite spots — the same ones we can't wait to share with you.",
+  ch_badge:'🏛 UNESCO Heritage · 16th century',
+  ch_name:'Historic Centre',
+  ch_tagline:'The best-preserved historic centre in Latin America',
+  ch_desc:'Declared a UNESCO World Heritage Site in 1978, Quito\'s Historic Centre is a maze of cobbled squares, baroque convents and gilded churches that tell 500 years of history. Walking its streets feels like stepping back in time.',
+  ch_h1_title:'La Compañía de Jesús',
+  ch_h1_desc:'the most ornate high altar in the Americas, covered in gold leaf and baroque carvings.',
+  ch_h2_title:'Plaza de San Francisco',
+  ch_h2_desc:"South America's largest colonial square, anchored by the magnificent 16th-century Franciscan convent.",
+  ch_h3_title:'Basílica del Voto Nacional',
+  ch_h3_desc:'climbing its neo-Gothic towers gives you the best panoramic view of the city and surrounding volcanoes.',
+  ch_h4_title:'In December',
+  ch_h4_desc:'the streets are draped in Christmas lights and the Virgen del Panecillo glows from her hilltop all night long.',
+  ch_tip:"💡 Visit in the morning to beat the crowds and catch the golden light of the early hours. A local guide makes it even more special.",
+  qh_more:'✦   More places coming soon   ✦',
+  reg_eyebrow:'Gifts',
+  reg_title:'Honeymoon Fund',
+  reg_intro:"It fills our hearts with so much joy that you're joining us on this very special day. We would be deeply grateful if you'd like to contribute to our honeymoon. You may do so through our bank accounts:",
+  reg_bank_label:'Bank accounts',
+  bank_type_savings:'Savings Account',
+  bank_beneficiary_label:'Beneficiary: D Enriquez Eguiguren & M Mendizabal',
+  bank_soon:'🔧 Details coming soon',
+  reg_note:"We kindly ask that you don't bring physical gifts to the celebration — suitcase space on the way back to Madrid is our biggest enemy 🧳",
+  footer_love:'Made with love ♥',
+},
+pt:{
+  nav_home:'Início', nav_schedule:'Programa', nav_travel:'Viagem', nav_registry:'Presentes',
+  countdown_label:'dias para o casamento',
+  schedule_eyebrow:'19 de Dezembro, 2026',
+  schedule_title:'O Programa',
+  schedule_lead:'Mal podemos esperar para celebrar este dia tão especial com vocês. Aqui está o programa do nosso casamento.',
+  ev_ceremony:'Cerimônia Religiosa',
+  ev_shuttle_time:'Após a cerimônia',
+  ev_shuttle:'Transfer para o Local',
+  ev_shuttle_note:'Transporte gratuito disponível para todos os convidados',
+  ev_cocktail:'Coquetel',
+  ev_photos:'Fotos & Momentos ao Pôr do Sol',
+  ev_dinner:'Jantar de Recepção',
+  ev_party:'Festa & Dança',
+  schedule_closing:'Obrigado por fazer parte de um momento tão importante nas nossas vidas. Estamos muito animados para celebrar juntos!',
+  travel_eyebrow:'Como chegar',
+  travel_title:'Viagem & Hospedagem',
+  travel_lead:'Quito é facilmente acessível das principais cidades do mundo. Aqui estão algumas dicas para te ajudar a planejar a chegada.',
+  tr_eu_title:'Da Europa',
+  tr_eu_text:'A forma mais conveniente é o voo direto da Iberia de Madrid para Quito (aprox. 11 horas). Outra ótima opção é o voo direto da KLM de Amsterdã para Quito.',
+  tr_us_title:'Dos EUA',
+  tr_us_text:'A rota mais conveniente geralmente é o voo direto de Miami para Quito (em torno de 4–5 horas).',
+  tr_ba_title:'De Buenos Aires',
+  tr_ba_text:'De Buenos Aires, há voos diretos para Quito com duração de aproximadamente 6 horas.',
+  tr_hotel_title:'Hospedagem recomendada: Cumbayá',
+  tr_hotel_text:'Recomendamos se hospedar em Cumbayá, uma das áreas mais seguras e agradáveis perto de Quito, com ótimos restaurantes, bares, cafés e fácil acesso ao local do casamento e à cidade. É o lugar perfeito para tornar a sua visita uma experiência completa.',
+  qf_altitude:'Altitude acima do nível do mar',
+  qf_temp:'Temperatura em dezembro',
+  qf_equator:'Metros da linha do Equador',
+  qf_heritage:'Patrimônio Mundial da UNESCO',
+  tr_quito_blurb:'Recomendamos se hospedar em Quito ou arredores. A cidade combina uma arquitetura colonial espetacular com bairros gastronômicos modernos, natureza vulcânica ao redor e um clima primaveril durante todo o ano. Dezembro é especialmente festivo e luminoso — o momento perfeito para conhecê-la.',
+  hotels_eyebrow:'Onde se hospedar',
+  hotels_title:'Hospedagens recomendadas perto da celebração',
+  hotel_badge_closest:'⭐ A poucos minutos a pé do local',
+  hotel_badge_tumbaco:'🌿 Ao lado do centro de Tumbaco',
+  sanjose_tagline:'Fazenda colonial do século XVII · Puembo, Vale de Tumbaco',
+  sanjose_desc:'Localizado a apenas 15 minutos do Aeroporto Internacional de Quito, o San José de Puembo é um refúgio elegante que combina conforto moderno com o charme colonial do seu entorno sereno. A casa principal data do século XVII e preserva paredes de adobe, colunas de madeira capulí e belas pinturas coloniais — uma experiência única a passos da nossa celebração.',
+  ilalo_tagline:'Hotel boutique tranquilo · Tumbaco, Quito',
+  ilalo_desc:'A poucos minutos do vibrante centro de Tumbaco, o Ilalo Garden é um oásis de tranquilidade e serenidade. Combina quartos modernos e bem equipados com um ambiente íntimo e natural — o refúgio ideal para descansar entre as comemorações.',
+  travel_flights_eyebrow:'Como chegar de…',
+  hotel_map:'Ver no Google Maps',
+  hotel_website_btn:'Visitar site',
+  hotel_map_btn:'Mapa',
+  zoom_hint:'⤢ ampliar',
+  am_pool:'🏊 Piscina',
+  am_restaurant:'🍽 Restaurante',
+  am_gardens:'🌿 Jardins',
+  am_events:'🎉 Salões de eventos',
+  am_bar:'🍸 Bar & Lounge',
+  am_terrace:'☀️ Terraço',
+  ilalo_nearby:'📍 Río Chiche: 1.5 km · Scala Shopping: 2.3 km · Quicentro: 21.7 km · Parque La Carolina: 15.7 km',
+  nav_quehacemos:'Quito',
+  qh_eyebrow:'Quito te espera',
+  qh_title:'O que fazer em Quito',
+  qh_lead:'Aproveitem a visita para descobrir uma cidade que surpreende a cada esquina. Aqui estão os nossos lugares favoritos — os mesmos que queremos partilhar com vocês.',
+  ch_badge:'🏛 Patrimônio UNESCO · Século XVI',
+  ch_name:'Centro Histórico',
+  ch_tagline:'O centro histórico mais bem preservado da América Latina',
+  ch_desc:'Declarado Patrimônio Mundial pela UNESCO em 1978, o Centro Histórico de Quito é um labirinto de praças de pedra, conventos barrocos e igrejas douradas que contam 500 anos de história. Caminhar pelas suas ruas é viajar no tempo.',
+  ch_h1_title:'La Compañía de Jesús',
+  ch_h1_desc:'o altar-mor mais ornamentado das Américas, coberto de ouro e entalhes barrocos.',
+  ch_h2_title:'Plaza de San Francisco',
+  ch_h2_desc:'a maior praça colonial da América do Sul, com o magnífico convento franciscano do século XVI.',
+  ch_h3_title:'Basílica del Voto Nacional',
+  ch_h3_desc:'subir às suas torres neogóticas oferece a melhor vista panorâmica da cidade.',
+  ch_h4_title:'Em dezembro',
+  ch_h4_desc:'as ruas se enchem de luzes natalinas e a Virgem do Panecillo ilumina a noite desde o seu morro.',
+  ch_tip:'💡 Visitem pela manhã para evitar as multidões e aproveitem a luz dourada das primeiras horas. Um guia local torna tudo ainda mais especial.',
+  qh_more:'✦   Mais lugares em breve   ✦',
+  reg_eyebrow:'Presentes',
+  reg_title:'Lua de Mel',
+  reg_intro:'É com muita alegria que nos acompanham neste dia tão especial para nós. Ficariamos muito gratos se desejarem contribuir para a nossa lua de mel. Podem fazê-lo através das nossas contas bancárias:',
+  reg_bank_label:'Contas bancárias',
+  bank_type_savings:'Conta Poupança',
+  bank_beneficiary_label:'Beneficiário: D Enriquez Eguiguren & M Mendizabal',
+  bank_soon:'🔧 Detalhes em breve',
+  reg_note:'Pedimos com muito carinho que não tragam presentes físicos para a celebração — o espaço na mala de volta para Madrid é o nosso maior inimigo 🧳',
+  footer_love:'Feito com amor ♥',
+},
+};
+
+let lang = 'es';
+
+function setLang(l){
+  lang = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(i18n[l][k] !== undefined) el.textContent = i18n[l][k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active', b.textContent.toLowerCase() === l);
+  });
+}
+
+/* ─── Countdown ─── */
+function tick(){
+  const target = new Date('2026-12-19T14:30:00');
+  const now = new Date();
+  const days = Math.max(0, Math.floor((target - now) / 86400000));
+  document.getElementById('countdownDays').textContent = days.toLocaleString();
+}
+tick();
+setInterval(tick, 60000);
+
+/* ─── Nav scroll ─── */
+window.addEventListener('scroll', ()=>{
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+},{passive:true});
+
+/* ─── Mobile menu ─── */
+function toggleMenu(){
+  document.getElementById('navLinks').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+/* ─── Carousels ─── */
+const carouselState = {};
+
+/* Each slide: {src, label, credit?, creditUrl?} */
+const carouselSources = {
+  sanjose:[
+    {src:'Hosteria San Jose de Puembo 1.jpeg', label:'Hostería San José de Puembo'},
+    {src:'Hosteria San Jose de Puembo 2.jpeg', label:'Hostería San José de Puembo'},
+    {src:'Hosteria San Jose de Puembo 3.jpeg', label:'Hostería San José de Puembo'},
+    {src:'Hosteria San Jose de Puembo 4.jpeg', label:'Hostería San José de Puembo'},
+  ],
+  ilalo:[
+    {src:'Ilalo Garden 1.jpeg', label:'Ilalo Garden Hotel'},
+    {src:'Ilalo Garden 2.jpeg', label:'Ilalo Garden Hotel'},
+    {src:'Ilalo Garden 3.jpeg', label:'Ilalo Garden Hotel'},
+    {src:'Ilalo Garden 4.jpeg', label:'Ilalo Garden Hotel'},
+  ],
+  ch:[
+    {src:'centro historico 2.jpg',              label:'La Compañía de Jesús — altar mayor',              credit:'@eddiegalvez_photo', creditUrl:'https://www.instagram.com/eddiegalvez_photo/'},
+    {src:'centro historico 3.jpg',              label:'Plaza de San Francisco al atardecer',             credit:'@eddiegalvez_photo', creditUrl:'https://www.instagram.com/eddiegalvez_photo/'},
+    {src:'centro historico 4.jpg',              label:'Calles navideñas & Virgen del Panecillo',         credit:'@eddiegalvez_photo', creditUrl:'https://www.instagram.com/eddiegalvez_photo/'},
+    {src:'centro historico 5.jpg',              label:'Basílica del Voto Nacional — vista aérea',       credit:'@eddiegalvez_photo', creditUrl:'https://www.instagram.com/eddiegalvez_photo/'},
+    {src:'centro historico daniel y maria 1.jpeg', label:'Maria & Daniel — terraza de La Catedral'},
+    {src:'centro historico daniel y maria 2.jpeg', label:'Maria & Daniel — cúpula de La Catedral'},
+    {src:'centro historico daniel y maria 3.jpeg', label:'Maria & Daniel — capilla colonial'},
+  ],
+};
+
+function carouselInit(id, count){
+  carouselState[id] = {idx:0, count};
+  const dotsEl = document.getElementById('dots-'+id);
+  for(let i=0;i<count;i++){
+    const d = document.createElement('button');
+    d.className = 'carousel-dot' + (i===0?' active':'');
+    d.setAttribute('aria-label','Slide '+(i+1));
+    d.onclick = (e)=>{e.stopPropagation();carouselGoto(id,i)};
+    dotsEl.appendChild(d);
+  }
+}
+
+function carouselGoto(id, idx){
+  const s = carouselState[id];
+  s.idx = (idx + s.count) % s.count;
+  document.getElementById('track-'+id).style.transform = `translateX(-${s.idx*100}%)`;
+  document.querySelectorAll('#dots-'+id+' .carousel-dot').forEach((d,i)=>{
+    d.classList.toggle('active', i===s.idx);
+  });
+  /* update credit badge if this carousel has one */
+  const badge = document.getElementById('credit-'+id);
+  if(badge){
+    const slide = carouselSources[id][s.idx];
+    if(slide && slide.credit){
+      badge.textContent = '📷 ' + slide.credit;
+      badge.href = slide.creditUrl || '#';
+      badge.classList.remove('hidden');
+    } else {
+      badge.classList.add('hidden');
+    }
+  }
+}
+
+function carouselMove(id, dir){
+  carouselGoto(id, carouselState[id].idx + dir);
+}
+
+carouselInit('sanjose', 4);
+carouselInit('ilalo', 4);
+carouselInit('ch', 7);
+
+/* ─── Lightbox ─── */
+let lbSlides = [], lbIdx = 0;
+
+function lbOpen(slides, idx){
+  lbSlides = slides; lbIdx = idx;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+  lbRender();
+}
+
+function lbRender(){
+  const slide = lbSlides[lbIdx];
+  const src     = typeof slide === 'string' ? slide : slide.src;
+  const label   = typeof slide === 'string' ? ''    : (slide.label || '');
+  const credit  = typeof slide === 'string' ? null  : slide.credit;
+  const creditUrl = typeof slide === 'string' ? null : slide.creditUrl;
+
+  document.getElementById('lbImg').src = src;
+  document.getElementById('lbCaption').textContent = label;
+  document.getElementById('lbCounter').textContent =
+    lbSlides.length > 1 ? (lbIdx+1) + ' / ' + lbSlides.length : '';
+
+  /* credit link in lightbox */
+  let lbCredit = document.getElementById('lbCredit');
+  if(!lbCredit){
+    lbCredit = document.createElement('a');
+    lbCredit.id = 'lbCredit';
+    lbCredit.target = '_blank'; lbCredit.rel = 'noopener';
+    lbCredit.style.cssText='font-size:.6rem;color:rgba(255,255,255,.45);letter-spacing:.1em;margin-top:.2rem;text-decoration:none;';
+    document.getElementById('lbCounter').insertAdjacentElement('afterend', lbCredit);
+  }
+  if(credit){
+    lbCredit.textContent = '📷 ' + credit;
+    lbCredit.href = creditUrl || '#';
+    lbCredit.style.display='block';
+  } else {
+    lbCredit.style.display='none';
+  }
+}
+
+function lbMove(dir){
+  lbIdx = (lbIdx + dir + lbSlides.length) % lbSlides.length;
+  lbRender();
+}
+
+function lbClose(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function lbOpenCarousel(id){
+  const s = carouselState[id];
+  lbOpen(carouselSources[id], s.idx);
+}
+
+function lbOpenSingle(src, caption){
+  lbOpen([{src, label:caption}], 0);
+}
+
+document.addEventListener('keydown', e=>{
+  if(!document.getElementById('lightbox').classList.contains('open')) return;
+  if(e.key==='ArrowRight') lbMove(1);
+  if(e.key==='ArrowLeft')  lbMove(-1);
+  if(e.key==='Escape')     lbClose();
+});
+
+/* ─── Scroll animations ─── */
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}
+  });
+},{threshold:0.1});
+
+document.querySelectorAll('.fade-in,.timeline-item').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
