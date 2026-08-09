@@ -535,6 +535,42 @@ body{
   color:#ccc;margin-top:1.5rem;letter-spacing:.06em;
 }
 
+/* ── Restaurant carousel ── */
+.resto-section{margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--mist)}
+.resto-carousel{position:relative;overflow:hidden;border:1px solid var(--mist);background:var(--white)}
+.resto-track{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1)}
+.resto-slide{min-width:100%;display:grid;grid-template-columns:42% 58%}
+.resto-photo{position:relative;min-height:340px}
+.resto-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.resto-info{padding:1.8rem 2rem;display:flex;flex-direction:column;gap:.35rem}
+.resto-cuisine{
+  display:inline-block;font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);border:1px solid var(--gold);padding:.16rem .48rem;width:fit-content;margin-bottom:.1rem;
+}
+.resto-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--sage);line-height:1.1}
+.resto-pick{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tan)}
+.resto-desc{font-size:.8rem;line-height:1.75;color:var(--text);margin:.25rem 0 .1rem}
+.resto-must{font-size:.76rem;color:var(--dark)}
+.resto-must em{color:var(--text);font-style:normal}
+.resto-note{
+  font-size:.72rem;color:var(--sage-mid);font-style:italic;
+  border-left:2px solid var(--mist);padding-left:.7rem;margin-top:.3rem;line-height:1.6;
+}
+.resto-links{display:flex;gap:1.2rem;margin-top:.5rem;flex-wrap:wrap}
+.resto-link{
+  font-size:.68rem;letter-spacing:.06em;font-family:'Lato',sans-serif;
+  color:var(--gold);text-decoration:none;
+  border-bottom:1px solid transparent;transition:border-color .2s;
+}
+.resto-link:hover{border-bottom-color:var(--gold)}
+.resto-dots{display:flex;gap:.3rem;justify-content:center;margin-top:.9rem}
+.resto-dots .carousel-dot{width:6px;height:6px}
+
+@media(max-width:750px){
+  .resto-slide{grid-template-columns:1fr}
+  .resto-photo{min-height:220px}
+}
+
 @media(max-width:750px){
   .place-card{grid-template-columns:1fr}
   .place-carousel,.place-video-wrap{height:260px;min-height:260px}
@@ -1287,6 +1323,194 @@ footer{
       </div>
     </div>
 
+    <!-- ── Dónde comer ── -->
+    <div class="resto-section">
+      <p class="hotels-section-label fade-in" data-i18n="resto_eyebrow">Dónde comer</p>
+      <h3 class="hotels-section-title fade-in" data-i18n="resto_title">Restaurantes que recomendamos</h3>
+      <p class="section-lead fade-in" style="max-width:640px;margin:0 auto 1.8rem" data-i18n="resto_lead">Deslicen para ver todos nuestros restaurantes favoritos.</p>
+
+      <div class="resto-carousel fade-in">
+        <div class="resto-track" id="track-resto">
+
+          <!-- 1. De la Llama -->
+          <div class="resto-slide">
+            <div class="resto-photo"><img src="de_llama.jpg" alt="De la Llama, Quito"></div>
+            <div class="resto-info">
+              <span class="resto-cuisine" data-i18n="r_llama_cuisine">Ecuatoriano contemporáneo · Vegano-friendly</span>
+              <div class="resto-name">De la Llama</div>
+              <div class="resto-pick" data-i18n="resto_toppick">★ Nuestra primera elección</div>
+              <p class="resto-desc" data-i18n="r_llama_desc">Cocina ecuatoriana de autor con espíritu creativo y deliciosas opciones veganas. Un lugar con carácter propio que reinterpreta los sabores del Ecuador.</p>
+              <div class="resto-must"><span data-i18n="pedir_label">Pedir:</span> <em>Sango de mariscos, el Chocopaxi</em></div>
+              <p class="resto-note" data-i18n="r_llama_note">El sango de mariscos es de otro mundo — reconfortante y lleno de sabor. Y el Chocopaxi es un postre de chocolate con la forma exacta del volcán Cotopaxi. Imprescindible.</p>
+              <div class="resto-links">
+                <a class="resto-link" href="https://maps.google.com/?q=De+la+Llama+Quito" target="_blank" rel="noopener" data-i18n="maps_label">Cómo llegar</a>
+                <a class="resto-link" href="https://www.tripadvisor.com/Search?q=De+la+Llama+Quito" target="_blank" rel="noopener" data-i18n="ta_label">TripAdvisor</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Cevicheria Guayaca -->
+          <div class="resto-slide">
+            <div class="resto-photo"><img src="cevicheria_guayaca.jpg" alt="Cevichería Guayaca, Quito"></div>
+            <div class="resto-info">
+              <span class="resto-cuisine" data-i18n="r_guayaca_cuisine">Cevichería · Mariscos</span>
+              <div class="resto-name">Cevichería Guayaca</div>
+              <p class="resto-desc" data-i18n="r_guayaca_desc">El lugar para el mejor ceviche de Quito. Fresco, bien sazonado y sin artificios — justo lo que tiene que ser. Una dirección que no falla.</p>
+              <div class="resto-must"><span data-i18n="pedir_label">Pedir:</span> <em>Ceviche de camarón, ceviche mixto</em></div>
+              <p class="resto-note" data-i18n="r_guayaca_note">El mejor ceviche de Quito, sin discusión.</p>
+              <div class="resto-links">
+                <a class="resto-link" href="https://maps.google.com/?q=Cevicheria+Guayaca+Quito" target="_blank" rel="noopener" data-i18n="maps_label">Cómo llegar</a>
+                <a class="resto-link" href="https://www.tripadvisor.com/Search?q=Cevicheria+Guayaca+Quito" target="_blank" rel="noopener" data-i18n="ta_label">TripAdvisor</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Café del Fraile -->
+          <div class="resto-slide">
+            <div class="resto-photo"><img src="cafe_fraile.jpg" alt="Café del Fraile, Centro Histórico"></div>
+            <div class="resto-info">
+              <span class="resto-cuisine" data-i18n="r_fraile_cuisine">Ecuatoriano · Centro Histórico</span>
+              <div class="resto-name">Café del Fraile</div>
+              <p class="resto-desc" data-i18n="r_fraile_desc">En el corazón del Centro Histórico, dentro de un edificio colonial de piedra. La atmósfera sola ya justifica la visita — los arcos, las velas, el silencio del patio. La cocina ecuatoriana es honesta y llena de alma.</p>
+              <div class="resto-must"><span data-i18n="pedir_label">Pedir:</span> <em>Trilogía de sopas</em></div>
+              <p class="resto-note" data-i18n="r_fraile_note">Las sopas son perfectas. La trilogía es obligada — no se vayan sin pedirla.</p>
+              <div class="resto-links">
+                <a class="resto-link" href="https://maps.google.com/?q=Cafe+del+Fraile+Quito" target="_blank" rel="noopener" data-i18n="maps_label">Cómo llegar</a>
+                <a class="resto-link" href="https://www.tripadvisor.com/Search?q=Cafe+del+Fraile+Quito" target="_blank" rel="noopener" data-i18n="ta_label">TripAdvisor</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Briciola -->
+          <div class="resto-slide">
+            <div class="resto-photo"><img src="briciola.jpg" alt="Briciola, Quito"></div>
+            <div class="resto-info">
+              <span class="resto-cuisine" data-i18n="r_briciola_cuisine">Italiano · Pasta artesanal · La Floresta</span>
+              <div class="resto-name">Briciola</div>
+              <p class="resto-desc" data-i18n="r_briciola_desc">Restaurante italiano íntimo con pasta artesanal elaborada cada día y recetas de cocina casera italiana. Un respiro mediterráneo en medio de los Andes. Pequeño, cálido y siempre lleno — reserva con antelación.</p>
+              <div class="resto-must"><span data-i18n="pedir_label">Pedir:</span> <em>Pasta del día, tiramisú</em></div>
+              <div class="resto-links">
+                <a class="resto-link" href="https://maps.google.com/?q=Briciola+Quito" target="_blank" rel="noopener" data-i18n="maps_label">Cómo llegar</a>
+                <a class="resto-link" href="https://www.tripadvisor.com/Search?q=Briciola+Quito" target="_blank" rel="noopener" data-i18n="ta_label">TripAdvisor</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Achiote -->
+          <div class="resto-slide">
+            <div class="resto-photo"><img src="achiote.jpg" alt="Achiote, Quito"></div>
+            <div class="resto-info">
+              <span class="resto-cuisine" data-i18n="r_achiote_cuisine">Ecuatoriano · Tradicional</span>
+              <div class="resto-name">Achiote</div>
+              <p class="resto-desc" data-i18n="r_achiote_desc">Cocina ecuatoriana de raíz, sin pretensiones y con mucho sabor. El locro de papa es de manual — cremoso, contundente y perfectamente sazonado. Uno de esos lugares donde la comida habla por sí sola.</p>
+              <div class="resto-must"><span data-i18n="pedir_label">Pedir:</span> <em>Locro de papa, seco de pollo</em></div>
+              <p class="resto-note" data-i18n="r_achiote_note">Daniel trabajó aquí un par de días — así que conoce de primera mano que el locro es el plato estrella.</p>
+              <div class="resto-links">
+                <a class="resto-link" href="https://maps.google.com/?q=Achiote+Restaurante+Quito" target="_blank" rel="noopener" data-i18n="maps_label">Cómo llegar</a>
+                <a class="resto-link" href="https://www.tripadvisor.com/Search?q=Achiote+Quito" target="_blank" rel="noopener" data-i18n="ta_label">TripAdvisor</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Casa Gangotena -->
+          <div class="resto-slide">
+            <div class="resto-photo"><img src="casa_gangotena.jpg" alt="Casa Gangotena, Plaza San Francisco"></div>
+            <div class="resto-info">
+              <span class="resto-cuisine" data-i18n="r_gangotena_cuisine">Alta cocina ecuatoriana · Plaza San Francisco</span>
+              <div class="resto-name">Casa Gangotena</div>
+              <p class="resto-desc" data-i18n="r_gangotena_desc">El restaurante del boutique hotel Casa Gangotena, frente a la Plaza de San Francisco. Cocina ecuatoriana contemporánea ejecutada con precisión impecable en uno de los entornos más elegantes del Centro Histórico. Probablemente el mejor restaurante de Quito.</p>
+              <div class="resto-must"><span data-i18n="pedir_label">Pedir:</span> <em>Menú degustación</em></div>
+              <div class="resto-links">
+                <a class="resto-link" href="https://maps.google.com/?q=Casa+Gangotena+Quito" target="_blank" rel="noopener" data-i18n="maps_label">Cómo llegar</a>
+                <a class="resto-link" href="https://www.tripadvisor.com/Search?q=Casa+Gangotena+Quito" target="_blank" rel="noopener" data-i18n="ta_label">TripAdvisor</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Mercado Mixtura -->
+          <div class="resto-slide">
+            <div class="resto-photo"><img src="mercado_mixtura.jpg" alt="Mercado Mixtura, Quito"></div>
+            <div class="resto-info">
+              <span class="resto-cuisine" data-i18n="r_mixtura_cuisine">Fusión · Mercado gourmet</span>
+              <div class="resto-name">Mercado Mixtura</div>
+              <p class="resto-desc" data-i18n="r_mixtura_desc">Un mercado gastronómico con múltiples puestos que ofrecen una mezcla de cocinas locales e internacionales. Perfecto para picar, probar varios sabores en una misma tarde y descubrir combinaciones inesperadas — sin comprometerse con un solo menú.</p>
+              <div class="resto-must"><span data-i18n="pedir_label">Pedir:</span> <em>Explorar los puestos, probar de todo</em></div>
+              <div class="resto-links">
+                <a class="resto-link" href="https://maps.google.com/?q=Mercado+Mixtura+Quito" target="_blank" rel="noopener" data-i18n="maps_label">Cómo llegar</a>
+                <a class="resto-link" href="https://www.tripadvisor.com/Search?q=Mercado+Mixtura+Quito" target="_blank" rel="noopener" data-i18n="ta_label">TripAdvisor</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. Vista Hermosa -->
+          <div class="resto-slide">
+            <div class="resto-photo"><img src="vista_hermosa.jpg" alt="Vista Hermosa, Centro Histórico"></div>
+            <div class="resto-info">
+              <span class="resto-cuisine" data-i18n="r_vista_cuisine">Ecuatoriano · Terraza panorámica · Centro Histórico</span>
+              <div class="resto-name">Vista Hermosa</div>
+              <p class="resto-desc" data-i18n="r_vista_desc">Restaurante con terraza sobre los tejados del Centro Histórico. La vista de los campanarios y cúpulas coloniales desde las alturas es el plato más memorable — pero la cocina ecuatoriana aguanta bien el tipo. El lugar perfecto para el aperitivo de la tarde.</p>
+              <div class="resto-must"><span data-i18n="pedir_label">Pedir:</span> <em>Cócteles al atardecer</em></div>
+              <div class="resto-links">
+                <a class="resto-link" href="https://maps.google.com/?q=Vista+Hermosa+Quito" target="_blank" rel="noopener" data-i18n="maps_label">Cómo llegar</a>
+                <a class="resto-link" href="https://www.tripadvisor.com/Search?q=Vista+Hermosa+Quito" target="_blank" rel="noopener" data-i18n="ta_label">TripAdvisor</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9. Zazu -->
+          <div class="resto-slide">
+            <div class="resto-photo"><img src="zazu.jpg" alt="Zazu, Quito"></div>
+            <div class="resto-info">
+              <span class="resto-cuisine" data-i18n="r_zazu_cuisine">Alta cocina · Ecuatoriano de autor</span>
+              <div class="resto-name">Zazu</div>
+              <p class="resto-desc" data-i18n="r_zazu_desc">Uno de los restaurantes más aclamados de Quito y referencia de la cocina ecuatoriana contemporánea. Técnica internacional, ingredientes locales de temporada y una propuesta creativa que no para de sorprender. Una experiencia gastronómica completa.</p>
+              <div class="resto-must"><span data-i18n="pedir_label">Pedir:</span> <em>Menú degustación del chef</em></div>
+              <div class="resto-links">
+                <a class="resto-link" href="https://maps.google.com/?q=Zazu+Quito" target="_blank" rel="noopener" data-i18n="maps_label">Cómo llegar</a>
+                <a class="resto-link" href="https://www.tripadvisor.com/Search?q=Zazu+Quito" target="_blank" rel="noopener" data-i18n="ta_label">TripAdvisor</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 10. Al Forno -->
+          <div class="resto-slide">
+            <div class="resto-photo"><img src="al_forno.jpg" alt="Al Forno, Quito"></div>
+            <div class="resto-info">
+              <span class="resto-cuisine" data-i18n="r_forno_cuisine">Italiano · Pizzería · La Floresta</span>
+              <div class="resto-name">Al Forno</div>
+              <p class="resto-desc" data-i18n="r_forno_desc">El lugar de referencia para la pizza en Quito. Horno de leña, masa trabajada con tiempo y combinaciones que respetan la tradición italiana sin rigidez. Informal, alegre y siempre sabroso.</p>
+              <div class="resto-must"><span data-i18n="pedir_label">Pedir:</span> <em>Pizza al pesto</em></div>
+              <p class="resto-note" data-i18n="r_forno_note">La pizza al pesto es simplemente perfecta.</p>
+              <div class="resto-links">
+                <a class="resto-link" href="https://maps.google.com/?q=Al+Forno+Quito" target="_blank" rel="noopener" data-i18n="maps_label">Cómo llegar</a>
+                <a class="resto-link" href="https://www.tripadvisor.com/Search?q=Al+Forno+Quito" target="_blank" rel="noopener" data-i18n="ta_label">TripAdvisor</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 11. Marcus -->
+          <div class="resto-slide">
+            <div class="resto-photo"><img src="marcus.jpg" alt="Marcus, Quito"></div>
+            <div class="resto-info">
+              <span class="resto-cuisine" data-i18n="r_marcus_cuisine">Fusión franco-ecuatoriana · Fine dining</span>
+              <div class="resto-name">Marcus</div>
+              <p class="resto-desc" data-i18n="r_marcus_desc">Propuesta de alta cocina que fusiona la precisión técnica francesa con los ingredientes de temporada del Ecuador. Uno de los restaurantes más refinados de la ciudad, con una sala elegante y un servicio impecable.</p>
+              <div class="resto-must"><span data-i18n="pedir_label">Pedir:</span> <em>Menú del chef</em></div>
+              <div class="resto-links">
+                <a class="resto-link" href="https://maps.google.com/?q=Marcus+Quito" target="_blank" rel="noopener" data-i18n="maps_label">Cómo llegar</a>
+                <a class="resto-link" href="https://www.tripadvisor.com/Search?q=Marcus+Quito" target="_blank" rel="noopener" data-i18n="ta_label">TripAdvisor</a>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end resto-track -->
+        <button class="carousel-btn prev" onclick="carouselMove('resto',-1)" aria-label="Anterior">&#8249;</button>
+        <button class="carousel-btn next" onclick="carouselMove('resto', 1)" aria-label="Siguiente">&#8250;</button>
+      </div><!-- end resto-carousel -->
+      <div class="carousel-dots resto-dots" id="dots-resto"></div>
+
+    </div><!-- end resto-section -->
+
   </div>
 </section>
 
@@ -1408,6 +1632,40 @@ es:{
   qh_eyebrow:'Quito te espera',
   qh_title:'Qué hacer en Quito',
   qh_lead:'Aprovechen su visita para descubrir una ciudad que sorprende en cada esquina. Aquí están nuestros lugares favoritos — los mismos que queremos compartir con ustedes.',
+  maps_label:'Cómo llegar',
+  ta_label:'TripAdvisor',
+  resto_eyebrow:'Dónde comer',
+  resto_title:'Restaurantes que recomendamos',
+  resto_lead:'Deslicen para ver todos nuestros restaurantes favoritos.',
+  resto_toppick:'★ Nuestra primera elección',
+  pedir_label:'Pedir:',
+  r_llama_cuisine:'Ecuatoriano contemporáneo · Vegano-friendly',
+  r_llama_desc:'Cocina ecuatoriana de autor con espíritu creativo y deliciosas opciones veganas. Un lugar con carácter propio que reinterpreta los sabores del Ecuador.',
+  r_llama_note:'El sango de mariscos es de otro mundo — reconfortante y lleno de sabor. Y el Chocopaxi es un postre de chocolate con la forma exacta del volcán Cotopaxi. Imprescindible.',
+  r_guayaca_cuisine:'Cevichería · Mariscos',
+  r_guayaca_desc:'El lugar para el mejor ceviche de Quito. Fresco, bien sazonado y sin artificios — justo lo que tiene que ser. Una dirección que no falla.',
+  r_guayaca_note:'El mejor ceviche de Quito, sin discusión.',
+  r_fraile_cuisine:'Ecuatoriano · Centro Histórico',
+  r_fraile_desc:'En el corazón del Centro Histórico, dentro de un edificio colonial de piedra. La atmósfera sola ya justifica la visita — los arcos, las velas, el silencio del patio. La cocina ecuatoriana es honesta y llena de alma.',
+  r_fraile_note:'Las sopas son perfectas. La trilogía es obligada — no se vayan sin pedirla.',
+  r_briciola_cuisine:'Italiano · Pasta artesanal · La Floresta',
+  r_briciola_desc:'Restaurante italiano íntimo con pasta artesanal elaborada cada día y recetas de cocina casera italiana. Un respiro mediterráneo en medio de los Andes. Pequeño, cálido y siempre lleno — reserva con antelación.',
+  r_achiote_cuisine:'Ecuatoriano · Tradicional',
+  r_achiote_desc:'Cocina ecuatoriana de raíz, sin pretensiones y con mucho sabor. El locro de papa es de manual — cremoso, contundente y perfectamente sazonado. Uno de esos lugares donde la comida habla por sí sola.',
+  r_achiote_note:'Daniel trabajó aquí un par de días — así que conoce de primera mano que el locro es el plato estrella.',
+  r_gangotena_cuisine:'Alta cocina ecuatoriana · Plaza San Francisco',
+  r_gangotena_desc:'El restaurante del boutique hotel Casa Gangotena, frente a la Plaza de San Francisco. Cocina ecuatoriana contemporánea ejecutada con precisión impecable en uno de los entornos más elegantes del Centro Histórico. Probablemente el mejor restaurante de Quito.',
+  r_mixtura_cuisine:'Fusión · Mercado gourmet',
+  r_mixtura_desc:'Un mercado gastronómico con múltiples puestos que ofrecen una mezcla de cocinas locales e internacionales. Perfecto para picar, probar varios sabores en una misma tarde y descubrir combinaciones inesperadas.',
+  r_vista_cuisine:'Ecuatoriano · Terraza panorámica · Centro Histórico',
+  r_vista_desc:'Restaurante con terraza sobre los tejados del Centro Histórico. La vista de los campanarios y cúpulas coloniales desde las alturas es el plato más memorable — pero la cocina ecuatoriana aguanta bien el tipo. El lugar perfecto para el aperitivo de la tarde.',
+  r_zazu_cuisine:'Alta cocina · Ecuatoriano de autor',
+  r_zazu_desc:'Uno de los restaurantes más aclamados de Quito y referencia de la cocina ecuatoriana contemporánea. Técnica internacional, ingredientes locales de temporada y una propuesta creativa que no para de sorprender.',
+  r_forno_cuisine:'Italiano · Pizzería · La Floresta',
+  r_forno_desc:'El lugar de referencia para la pizza en Quito. Horno de leña, masa trabajada con tiempo y combinaciones que respetan la tradición italiana sin rigidez. Informal, alegre y siempre sabroso.',
+  r_forno_note:'La pizza al pesto es simplemente perfecta.',
+  r_marcus_cuisine:'Fusión franco-ecuatoriana · Fine dining',
+  r_marcus_desc:'Propuesta de alta cocina que fusiona la precisión técnica francesa con los ingredientes de temporada del Ecuador. Uno de los restaurantes más refinados de la ciudad, con una sala elegante y un servicio impecable.',
   arm_badge:'Nuestro parque de los domingos',
   arm_name:'Parque de la Armenia',
   arm_tagline:'Cada domingo un rincón nuevo por descubrir',
@@ -1553,6 +1811,40 @@ en:{
   qh_eyebrow:'Quito awaits',
   qh_title:'Things to do in Quito',
   qh_lead:"Make the most of your visit and discover a city that surprises at every corner. Here are our favourite spots — the same ones we can't wait to share with you.",
+  maps_label:'Directions',
+  ta_label:'TripAdvisor',
+  resto_eyebrow:'Where to eat',
+  resto_title:'Our restaurant recommendations',
+  resto_lead:'Swipe through to see our full list of recommended restaurants.',
+  resto_toppick:'★ Our top pick',
+  pedir_label:'Must order:',
+  r_llama_cuisine:'Modern Ecuadorian · Vegan-friendly',
+  r_llama_desc:'Contemporary Ecuadorian cuisine with a creative spirit and delicious vegan options. A place with its own personality that reimagines the tastes of Ecuador.',
+  r_llama_note:"The sango de mariscos is out of this world — comforting and full of flavour. And the Chocopaxi is a chocolate dessert shaped exactly like the Cotopaxi volcano. A must.",
+  r_guayaca_cuisine:'Cevichería · Seafood',
+  r_guayaca_desc:'The place for the best ceviche in Quito. Fresh, well-seasoned and no-nonsense — exactly what it should be. A reliable address that never lets you down.',
+  r_guayaca_note:'The best ceviche in Quito, no argument.',
+  r_fraile_cuisine:'Ecuadorian · Historic Centre',
+  r_fraile_desc:'In the heart of the Historic Centre, inside a colonial stone building. The atmosphere alone is worth the visit — the stone arches, candles and quiet courtyard. The Ecuadorian cooking is honest and full of soul.',
+  r_fraile_note:"The soups are perfect. The trilogía is non-negotiable — don't leave without ordering it.",
+  r_briciola_cuisine:'Italian · Handmade pasta · La Floresta',
+  r_briciola_desc:'An intimate Italian restaurant with handmade pasta crafted daily and proper Italian home-cooking recipes. A Mediterranean breath of air in the middle of the Andes. Small, warm and always full — book ahead.',
+  r_achiote_cuisine:'Ecuadorian · Traditional',
+  r_achiote_desc:'Root Ecuadorian cooking — no pretension, just a lot of flavour. The locro de papa is textbook: creamy, hearty and perfectly seasoned. One of those places where the food speaks for itself.',
+  r_achiote_note:'Daniel worked here for a couple of days — so he knows first-hand that the locro is the star of the show.',
+  r_gangotena_cuisine:'Fine dining Ecuadorian · Plaza San Francisco',
+  r_gangotena_desc:'The restaurant of the Casa Gangotena boutique hotel, right on Plaza San Francisco. Contemporary Ecuadorian cuisine executed with impeccable precision in one of the most elegant settings in the Historic Centre. Probably the best restaurant in Quito.',
+  r_mixtura_cuisine:'Fusion · Gourmet market',
+  r_mixtura_desc:'A gourmet food market with multiple stalls offering a mix of local and international cuisines. Perfect for grazing, trying several flavours in one afternoon and stumbling upon unexpected combinations.',
+  r_vista_cuisine:'Ecuadorian · Rooftop terrace · Historic Centre',
+  r_vista_desc:'A restaurant with a terrace perched above the rooftops of the Historic Centre. The view of the colonial bell towers and domes from above is the most memorable dish — but the Ecuadorian cooking holds its own. Perfect for a late-afternoon aperitivo.',
+  r_zazu_cuisine:'Fine dining · Contemporary Ecuadorian',
+  r_zazu_desc:"One of Quito's most acclaimed restaurants and a benchmark of contemporary Ecuadorian cuisine. International technique, seasonal local ingredients and a creative vision that never stops surprising.",
+  r_forno_cuisine:'Italian · Pizzeria · La Floresta',
+  r_forno_desc:'The reference address for pizza in Quito. Wood-fired oven, carefully worked dough and combinations that respect Italian tradition without being rigid. Informal, cheerful and always delicious.',
+  r_forno_note:'The pesto pizza is simply perfect.',
+  r_marcus_cuisine:'French-Ecuadorian fusion · Fine dining',
+  r_marcus_desc:'A fine-dining proposal that fuses French technical precision with seasonal Ecuadorian ingredients. One of the most refined restaurants in the city, with an elegant dining room and impeccable service.',
   arm_badge:'Our Sunday park',
   arm_name:'Parque de la Armenia',
   arm_tagline:'Every Sunday a new corner to discover',
@@ -1698,6 +1990,40 @@ pt:{
   qh_eyebrow:'Quito te espera',
   qh_title:'O que fazer em Quito',
   qh_lead:'Aproveitem a visita para descobrir uma cidade que surpreende a cada esquina. Aqui estão os nossos lugares favoritos — os mesmos que queremos partilhar com vocês.',
+  maps_label:'Como chegar',
+  ta_label:'TripAdvisor',
+  resto_eyebrow:'Onde comer',
+  resto_title:'Restaurantes que recomendamos',
+  resto_lead:'Deslizem para ver a lista completa de restaurantes que recomendamos.',
+  resto_toppick:'★ A nossa primeira escolha',
+  pedir_label:'Pedir:',
+  r_llama_cuisine:'Equatoriano contemporâneo · Vegan-friendly',
+  r_llama_desc:'Cozinha equatoriana de autor com espírito criativo e deliciosas opções veganas. Um lugar com carácter próprio que reinterpreta os sabores do Equador.',
+  r_llama_note:'O sango de mariscos é de outro mundo — reconfortante e cheio de sabor. E o Chocopaxi é uma sobremesa de chocolate com a forma exacta do vulcão Cotopaxi. Imperdível.',
+  r_guayaca_cuisine:'Cevichería · Frutos do mar',
+  r_guayaca_desc:'O lugar para o melhor ceviche de Quito. Fresco, bem temperado e sem artifícios — exactamente o que deve ser. Uma morada que nunca decepciona.',
+  r_guayaca_note:'O melhor ceviche de Quito, sem discussão.',
+  r_fraile_cuisine:'Equatoriano · Centro Histórico',
+  r_fraile_desc:'No coração do Centro Histórico, dentro de um edifício colonial de pedra. A atmosfera por si só já justifica a visita — os arcos, as velas, o silêncio do pátio. A cozinha equatoriana é honesta e cheia de alma.',
+  r_fraile_note:'As sopas são perfeitas. A trilogia é obrigatória — não saiam sem pedi-la.',
+  r_briciola_cuisine:'Italiano · Massa artesanal · La Floresta',
+  r_briciola_desc:'Restaurante italiano íntimo com massa artesanal feita diariamente e receitas de cozinha caseira italiana. Um respiro mediterrâneo no meio dos Andes. Pequeno, acolhedor e sempre cheio — reserve com antecedência.',
+  r_achiote_cuisine:'Equatoriano · Tradicional',
+  r_achiote_desc:'Cozinha equatoriana de raiz, sem pretensões e com muito sabor. O locro de papa é de manual — cremoso, consistente e perfeitamente temperado. Um daqueles lugares onde a comida fala por si.',
+  r_achiote_note:'O Daniel trabalhou aqui uns dias — por isso sabe em primeira mão que o locro é o prato estrela.',
+  r_gangotena_cuisine:'Alta cozinha equatoriana · Plaza San Francisco',
+  r_gangotena_desc:'O restaurante do boutique hotel Casa Gangotena, em frente à Plaza de San Francisco. Cozinha equatoriana contemporânea executada com precisão impecável num dos ambientes mais elegantes do Centro Histórico. Provavelmente o melhor restaurante de Quito.',
+  r_mixtura_cuisine:'Fusão · Mercado gourmet',
+  r_mixtura_desc:'Um mercado gastronômico com múltiplos postos que oferecem uma mistura de cozinhas locais e internacionais. Perfeito para petiscar, experimentar vários sabores numa mesma tarde e descobrir combinações inesperadas.',
+  r_vista_cuisine:'Equatoriano · Terraço panorâmico · Centro Histórico',
+  r_vista_desc:'Restaurante com terraço sobre os telhados do Centro Histórico. A vista dos campanários e cúpulas coloniais lá do alto é o prato mais memorável — mas a cozinha equatoriana aguenta bem. O lugar perfeito para o aperitivo da tarde.',
+  r_zazu_cuisine:'Alta cozinha · Equatoriano de autor',
+  r_zazu_desc:'Um dos restaurantes mais aclamados de Quito e referência da cozinha equatoriana contemporânea. Técnica internacional, ingredientes locais de temporada e uma proposta criativa que não para de surpreender.',
+  r_forno_cuisine:'Italiano · Pizzaria · La Floresta',
+  r_forno_desc:'A morada de referência para a pizza em Quito. Forno a lenha, massa trabalhada com tempo e combinações que respeitam a tradição italiana sem rigidez. Informal, alegre e sempre saboroso.',
+  r_forno_note:'A pizza ao pesto é simplesmente perfeita.',
+  r_marcus_cuisine:'Fusão franco-equatoriana · Fine dining',
+  r_marcus_desc:'Uma proposta de alta cozinha que funde a precisão técnica francesa com os ingredientes de temporada do Equador. Um dos restaurantes mais refinados da cidade, com uma sala elegante e um serviço impecável.',
   arm_badge:'O nosso parque dos domingos',
   arm_name:'Parque de la Armenia',
   arm_tagline:'Cada domingo um canto novo para descobrir',
@@ -1924,6 +2250,7 @@ function carouselMove(id, dir){
 
 carouselInit('sanjose', 4);
 carouselInit('ilalo', 4);
+carouselInit('resto', 11);
 carouselInit('arm', 3);
 carouselInit('tf', 3);
 carouselInit('chq', 4);
