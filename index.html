@@ -474,6 +474,15 @@ body{
 .place-carousel .carousel-slide{min-width:100%;height:100%;min-height:inherit;flex-shrink:0;position:relative}
 .place-carousel .carousel-slide img{width:100%;height:100%;min-height:inherit;object-fit:cover;display:block;position:absolute;inset:0}
 
+.place-video-wrap{
+  position:relative;overflow:hidden;
+  min-height:180px;height:100%;
+}
+.place-video{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+
 .carousel-credit-badge{
   position:absolute;bottom:.6rem;left:.6rem;z-index:3;
   font-size:.58rem;letter-spacing:.06em;
@@ -528,7 +537,7 @@ body{
 
 @media(max-width:750px){
   .place-card{grid-template-columns:1fr}
-  .place-carousel{height:260px}
+  .place-carousel,.place-video-wrap{height:260px;min-height:260px}
 }
 
 /* ── Registry ── */
@@ -1048,6 +1057,48 @@ footer{
       </div>
     </div>
 
+    <!-- ── Jardín Alado ── -->
+    <div class="place-card fade-in">
+
+      <div class="place-video-wrap">
+        <video class="place-video"
+               src="jardin_alado.mp4"
+               poster="jardin_alado.jpg"
+               controls
+               playsinline>
+        </video>
+      </div>
+
+      <div class="place-info">
+        <span class="place-badge" data-i18n="ja_badge">🦜 Rescate de Aves · Quito</span>
+        <div class="place-name" data-i18n="ja_name">Jardín Alado</div>
+        <div class="place-tagline" data-i18n="ja_tagline">Uno de nuestros lugares favoritos en Quito, y una de nuestras mejores citas</div>
+        <div class="place-desc" data-i18n="ja_desc">Jardín Alado es un centro de rescate y liberación de aves enclavado en las afueras de Quito. Un lugar mágico donde la naturaleza, la conservación y la emoción se encuentran. Cada visita es una oportunidad para aprender, para conectar con las aves y con uno mismo.</div>
+
+        <div class="place-highlights">
+          <div class="place-highlight">
+            <span class="place-hi-icon">🕊</span>
+            <span><span class="place-hi-label" data-i18n="ja_h1_title">Días de liberación</span> — <span data-i18n="ja_h1_desc">ver a un ave recuperada alzar el vuelo hacia la libertad es una de las experiencias más emotivas que hemos vivido.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span class="place-hi-icon">🌿</span>
+            <span><span class="place-hi-label" data-i18n="ja_h2_title">Interacción guiada</span> — <span data-i18n="ja_h2_desc">conocer de cerca las especies rescatadas acompañados por expertos apasionados en conservación.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span class="place-hi-icon">📚</span>
+            <span><span class="place-hi-label" data-i18n="ja_h3_title">Educación ambiental</span> — <span data-i18n="ja_h3_desc">el proyecto educa sobre la riqueza biodiversa del Ecuador y la importancia de protegerla.</span></span>
+          </div>
+        </div>
+
+        <p class="place-tip" data-i18n="ja_tip">💡 Recomendamos especialmente asistir en un día de liberación — pregúntenles con antelación cuándo es el próximo. Es mágico.</p>
+
+        <a href="https://www.instagram.com/jardinalado/" target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:.4rem;margin-top:.4rem;font-size:.72rem;letter-spacing:.06em;color:var(--gold);text-decoration:none;font-family:'Lato',sans-serif;">
+          📷 @jardinalado
+        </a>
+      </div>
+    </div>
+
     <p class="place-coming-soon fade-in" data-i18n="qh_more">✦ &nbsp; Más lugares próximamente &nbsp; ✦</p>
   </div>
 </section>
@@ -1183,6 +1234,17 @@ es:{
   ch_h4_title:'En diciembre',
   ch_h4_desc:'las calles se visten de luces navideñas y la Virgen del Panecillo ilumina la noche desde su colina.',
   ch_tip:'💡 Visítenlo de mañana para evitar las multitudes y aprovechen la luz dorada de las primeras horas. Un guía local lo hace aún más especial.',
+  ja_badge:'🦜 Rescate de Aves · Quito',
+  ja_name:'Jardín Alado',
+  ja_tagline:'Uno de nuestros lugares favoritos en Quito, y una de nuestras mejores citas',
+  ja_desc:'Jardín Alado es un centro de rescate y liberación de aves enclavado en las afueras de Quito. Un lugar mágico donde la naturaleza, la conservación y la emoción se encuentran. Cada visita es una oportunidad para aprender, para conectar con las aves y con uno mismo.',
+  ja_h1_title:'Días de liberación',
+  ja_h1_desc:'ver a un ave recuperada alzar el vuelo hacia la libertad es una de las experiencias más emotivas que hemos vivido.',
+  ja_h2_title:'Interacción guiada',
+  ja_h2_desc:'conocer de cerca las especies rescatadas acompañados por expertos apasionados en conservación.',
+  ja_h3_title:'Educación ambiental',
+  ja_h3_desc:'el proyecto educa sobre la riqueza biodiversa del Ecuador y la importancia de protegerla.',
+  ja_tip:'💡 Recomendamos especialmente asistir en un día de liberación — pregúntenles con antelación cuándo es el próximo. Es mágico.',
   qh_more:'✦   Más lugares próximamente   ✦',
   reg_eyebrow:'Regalos',
   reg_title:'Luna de Miel',
@@ -1262,6 +1324,17 @@ en:{
   ch_h4_title:'In December',
   ch_h4_desc:'the streets are draped in Christmas lights and the Virgen del Panecillo glows from her hilltop all night long.',
   ch_tip:"💡 Visit in the morning to beat the crowds and catch the golden light of the early hours. A local guide makes it even more special.",
+  ja_badge:'🦜 Bird Rescue Centre · Quito',
+  ja_name:'Jardín Alado',
+  ja_tagline:'One of our favourite places in Quito, and one of our best dates',
+  ja_desc:'Jardín Alado is a bird rescue and release centre on the outskirts of Quito. A magical place where nature, conservation and emotion come together. Every visit is a chance to learn, to connect with the birds, and with yourself.',
+  ja_h1_title:'Release days',
+  ja_h1_desc:'watching a recovered bird take flight into freedom is one of the most moving experiences we have ever shared.',
+  ja_h2_title:'Guided interaction',
+  ja_h2_desc:'meet rescued species up close, guided by passionate conservationists who bring each story to life.',
+  ja_h3_title:'Environmental education',
+  ja_h3_desc:"the project raises awareness of Ecuador's extraordinary biodiversity and why protecting it matters.",
+  ja_tip:"💡 We especially recommend going on a release day — ask them in advance when the next one is. It's magical.",
   qh_more:'✦   More places coming soon   ✦',
   reg_eyebrow:'Gifts',
   reg_title:'Honeymoon Fund',
@@ -1341,6 +1414,17 @@ pt:{
   ch_h4_title:'Em dezembro',
   ch_h4_desc:'as ruas se enchem de luzes natalinas e a Virgem do Panecillo ilumina a noite desde o seu morro.',
   ch_tip:'💡 Visitem pela manhã para evitar as multidões e aproveitem a luz dourada das primeiras horas. Um guia local torna tudo ainda mais especial.',
+  ja_badge:'🦜 Resgate de Aves · Quito',
+  ja_name:'Jardín Alado',
+  ja_tagline:'Um dos nossos lugares favoritos em Quito, e um dos nossos melhores encontros',
+  ja_desc:'O Jardín Alado é um centro de resgate e libertação de aves nas arredores de Quito. Um lugar mágico onde a natureza, a conservação e a emoção se encontram. Cada visita é uma oportunidade para aprender, para se conectar com as aves e consigo mesmo.',
+  ja_h1_title:'Dias de libertação',
+  ja_h1_desc:'ver uma ave recuperada alçar voo para a liberdade é uma das experiências mais emocionantes que já vivemos.',
+  ja_h2_title:'Interação guiada',
+  ja_h2_desc:'conhecer de perto as espécies resgatadas acompanhados por especialistas apaixonados pela conservação.',
+  ja_h3_title:'Educação ambiental',
+  ja_h3_desc:'o projeto educa sobre a riqueza biodiversa do Equador e a importância de protegê-la.',
+  ja_tip:'💡 Recomendamos especialmente ir num dia de libertação — perguntem com antecedência quando será o próximo. É mágico.',
   qh_more:'✦   Mais lugares em breve   ✦',
   reg_eyebrow:'Presentes',
   reg_title:'Lua de Mel',
