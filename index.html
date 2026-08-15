@@ -576,6 +576,131 @@ body{
   .place-carousel,.place-video-wrap{height:260px;min-height:260px}
 }
 
+/* ── RSVP ── */
+.rsvp-block{ max-width:540px;margin:0 auto }
+.rsvp-lead{
+  text-align:center;font-size:.9rem;line-height:1.8;
+  color:var(--text);margin-bottom:2rem;
+}
+.rsvp-code-wrap{
+  display:flex;gap:.75rem;align-items:stretch;
+  margin-bottom:1rem;
+}
+.rsvp-input{
+  flex:1;
+  font-family:'Lato',sans-serif;font-size:1rem;letter-spacing:.12em;
+  text-transform:uppercase;text-align:center;
+  border:1px solid var(--mist);background:var(--white);
+  color:var(--dark);padding:.75rem 1rem;
+  outline:none;transition:border-color .2s;
+}
+.rsvp-input:focus{ border-color:var(--sage) }
+.rsvp-input::placeholder{ letter-spacing:.06em;text-transform:none;color:#aaa;font-size:.85rem }
+.rsvp-btn{
+  font-family:'Lato',sans-serif;font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;
+  background:var(--sage);color:var(--white);
+  border:none;padding:.75rem 1.5rem;cursor:pointer;
+  transition:background .2s;white-space:nowrap;
+}
+.rsvp-btn:hover{ background:var(--sage-mid) }
+.rsvp-error{
+  text-align:center;font-size:.8rem;color:#c0392b;
+  border:1px solid #f5c6cb;background:#fff5f5;
+  padding:.6rem 1rem;line-height:1.6;
+}
+.rsvp-personal{ text-align:center }
+.rsvp-message{
+  font-family:'Cormorant Garamond',serif;font-size:1.2rem;
+  line-height:1.9;color:var(--dark);margin-bottom:1.8rem;
+}
+.rsvp-contact-note{
+  font-size:.72rem;color:var(--text);opacity:.6;
+  font-style:italic;margin-bottom:1.4rem;
+}
+.rsvp-confirm-q{
+  font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--sage);margin-bottom:1.4rem;
+}
+.rsvp-yn-wrap{ display:flex;gap:1rem;justify-content:center;flex-wrap:wrap }
+.rsvp-yn{
+  font-family:'Lato',sans-serif;font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;padding:.85rem 2.2rem;
+  cursor:pointer;border:1px solid var(--sage);transition:all .2s;
+}
+.rsvp-yes{ background:var(--sage);color:var(--white) }
+.rsvp-yes:hover{ background:var(--sage-mid);border-color:var(--sage-mid) }
+.rsvp-no{ background:transparent;color:var(--sage) }
+.rsvp-no:hover{ background:var(--sage);color:var(--white) }
+.rsvp-done{ text-align:center;padding:2rem 0 }
+.rsvp-done-msg{
+  font-family:'Cormorant Garamond',serif;font-size:1.5rem;
+  color:var(--sage);line-height:1.7;
+}
+.rsvp-summary{ max-width:480px;margin:0 auto }
+.rsvp-summary-greeting{
+  font-family:'Cormorant Garamond',serif;font-size:1.25rem;
+  color:var(--dark);line-height:1.7;margin-bottom:1.6rem;text-align:center;
+}
+.rsvp-summary-rows{
+  border:1px solid var(--mist);margin-bottom:2rem;
+}
+.rsvp-summary-row{
+  display:flex;gap:1rem;padding:.75rem 1.1rem;
+  border-bottom:1px solid var(--mist);
+  font-size:.82rem;line-height:1.6;
+}
+.rsvp-summary-row:last-child{ border-bottom:none }
+.rsvp-summary-key{
+  flex-shrink:0;width:110px;
+  font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--sage);padding-top:.1rem;
+}
+.rsvp-summary-val{ color:var(--dark);flex:1 }
+
+.rsvp-field{ margin-bottom:1.8rem }
+.rsvp-label{
+  display:block;font-size:.75rem;letter-spacing:.07em;
+  color:var(--dark);line-height:1.6;margin-bottom:.7rem;
+}
+.rsvp-textarea{
+  width:100%;font-family:'Lato',sans-serif;font-size:.85rem;
+  line-height:1.7;color:var(--dark);
+  border:1px solid var(--mist);background:var(--white);
+  padding:.75rem 1rem;resize:vertical;
+  outline:none;transition:border-color .2s;box-sizing:border-box;
+}
+.rsvp-textarea:focus{ border-color:var(--sage) }
+.rsvp-textarea::placeholder{ color:#bbb }
+.rsvp-toggle-wrap{ display:flex;gap:.6rem }
+.rsvp-toggle{
+  font-family:'Lato',sans-serif;font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;padding:.6rem 1.8rem;
+  cursor:pointer;border:1px solid var(--mist);
+  background:transparent;color:var(--text);transition:all .2s;
+}
+.rsvp-toggle.active{ background:var(--sage);border-color:var(--sage);color:var(--white) }
+.rsvp-submit-wrap{ text-align:center;margin-top:2rem;display:flex;flex-direction:column;align-items:center;gap:.8rem }
+.rsvp-clear-wrap{ text-align:center;margin-top:.5rem }
+.rsvp-clear-btn{
+  background:none;border:none;cursor:pointer;
+  font-family:'Lato',sans-serif;font-size:.65rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--text);opacity:.45;
+  text-decoration:underline;text-underline-offset:3px;transition:opacity .2s;
+}
+.rsvp-clear-btn:hover{ opacity:.9 }
+.rsvp-back-btn{
+  background:none;border:none;cursor:pointer;
+  font-family:'Lato',sans-serif;font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--text);text-decoration:underline;
+  text-underline-offset:3px;opacity:.6;transition:opacity .2s;
+}
+.rsvp-back-btn:hover{ opacity:1 }
+@media(max-width:500px){
+  .rsvp-code-wrap{ flex-direction:column }
+  .rsvp-btn{ width:100% }
+}
+
 /* ── Registry ── */
 .registry-photo{
   width:100%;margin:0 auto 3rem;
@@ -699,6 +824,7 @@ footer{
     <li><a href="#schedule" data-i18n="nav_schedule" onclick="closeMenu()">Programa</a></li>
     <li><a href="#travel"      data-i18n="nav_travel"      onclick="closeMenu()">Viaje</a></li>
     <li><a href="#quehacemos" data-i18n="nav_quehacemos" onclick="closeMenu()">Quito</a></li>
+    <li><a href="#rsvp"       data-i18n="nav_rsvp"       onclick="closeMenu()">RSVP</a></li>
     <li><a href="#registry"   data-i18n="nav_registry"   onclick="closeMenu()">Regalos</a></li>
   </ul>
 
@@ -1514,6 +1640,97 @@ footer{
   </div>
 </section>
 
+<!-- ──────────── RSVP ──────────── -->
+<section id="rsvp" class="section">
+  <div class="section-inner">
+    <h2 class="section-title" data-i18n="rsvp_eyebrow">RSVP</h2>
+
+    <!-- Step 1: code entry -->
+    <div id="rsvp-step-code" class="rsvp-block fade-in">
+      <p class="rsvp-lead" data-i18n="rsvp_lead">Cada invitado recibió un código único. Introdúcelo aquí para confirmar tu asistencia.</p>
+      <div class="rsvp-code-wrap">
+        <input
+          id="rsvp-code-input"
+          class="rsvp-input"
+          type="text"
+          maxlength="12"
+          autocomplete="off"
+          spellcheck="false"
+          data-i18n-placeholder="rsvp_placeholder"
+          placeholder="Tu código"
+          onkeydown="if(event.key==='Enter') rsvpCheckCode()"
+        >
+        <button id="rsvp-submit-btn" class="rsvp-btn" onclick="rsvpCheckCode()" data-i18n="rsvp_btn">Confirmar</button>
+      </div>
+      <p id="rsvp-error" class="rsvp-error" style="display:none" data-i18n="rsvp_invalid">Código no reconocido. Comprueba que está bien escrito o contacta con nosotros.</p>
+      <p id="rsvp-clear-wrap" class="rsvp-clear-wrap" style="display:none">
+        <button type="button" class="rsvp-clear-btn" onclick="rsvpClearCode()" data-i18n="rsvp_clear">Usar otro código</button>
+      </p>
+    </div>
+
+    <!-- Step 2: personalised message + YES / NO -->
+    <div id="rsvp-step-personal" class="rsvp-block" style="display:none">
+      <div class="rsvp-personal">
+        <p class="rsvp-message" id="rsvp-message-text"></p>
+        <p class="rsvp-contact-note" data-i18n="rsvp_contact_note">Si hay algún error en los nombres o en el número de pases, por favor contáctanos.</p>
+        <p class="rsvp-confirm-q" data-i18n="rsvp_confirm_q">Por favor confirma tu asistencia</p>
+        <div class="rsvp-yn-wrap">
+          <button class="rsvp-yn rsvp-yes" onclick="rsvpRespond(true)"  data-i18n="rsvp_yes_btn">Sí, allí estaré</button>
+          <button class="rsvp-yn rsvp-no"  onclick="rsvpRespond(false)" data-i18n="rsvp_no_btn">No podré asistir</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step: already-submitted summary -->
+    <div id="rsvp-step-summary" class="rsvp-block" style="display:none">
+      <div class="rsvp-summary">
+        <p class="rsvp-summary-greeting" id="rsvp-summary-greeting"></p>
+        <div id="rsvp-summary-rows" class="rsvp-summary-rows"></div>
+        <div class="rsvp-submit-wrap">
+          <button class="rsvp-btn" onclick="rsvpEdit()" data-i18n="rsvp_edit">Modificar respuesta</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: follow-up questions (YES path) -->
+    <div id="rsvp-step-questions" class="rsvp-block" style="display:none">
+      <form id="rsvp-form" onsubmit="rsvpSubmit(event)" novalidate>
+
+        <div class="rsvp-field">
+          <label class="rsvp-label" data-i18n="rsvp_q_dietary">¿Tiene alguien alguna restricción alimentaria? Por favor indica cuáles y quiénes (sé explícito)</label>
+          <textarea id="rsvp-dietary" class="rsvp-textarea" rows="3" data-i18n-placeholder="rsvp_q_dietary_ph" placeholder="Ej: Ana es celíaca, Pedro alérgico a los frutos secos..."></textarea>
+        </div>
+
+        <div class="rsvp-field">
+          <label class="rsvp-label" data-i18n="rsvp_q_transport">¿Necesitas transporte de la iglesia a la quinta?</label>
+          <div class="rsvp-toggle-wrap">
+            <button type="button" class="rsvp-toggle" id="rsvp-transport-yes" onclick="rsvpSetTransport(true)"  data-i18n="rsvp_si">Sí</button>
+            <button type="button" class="rsvp-toggle" id="rsvp-transport-no"  onclick="rsvpSetTransport(false)" data-i18n="rsvp_no_short">No</button>
+          </div>
+        </div>
+
+        <div class="rsvp-field">
+          <label class="rsvp-label" data-i18n="rsvp_q_message">Mensaje, sugerencia de canciones, juegos, comentarios o dudas</label>
+          <textarea id="rsvp-message-field" class="rsvp-textarea" rows="4" data-i18n-placeholder="rsvp_q_message_ph" placeholder="Todo lo que quieras contarnos..."></textarea>
+        </div>
+
+        <div class="rsvp-submit-wrap">
+          <button type="submit" class="rsvp-btn" data-i18n="rsvp_submit">Enviar</button>
+          <button type="button" class="rsvp-back-btn" onclick="rsvpGoBack()" data-i18n="rsvp_back">Volver</button>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Step 4: confirmation -->
+    <div id="rsvp-step-done" class="rsvp-block" style="display:none">
+      <div class="rsvp-done">
+        <p class="rsvp-done-msg" id="rsvp-done-msg"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ──────────── REGISTRY ──────────── -->
 <section id="registry" class="section section--alt">
   <div class="section-inner">
@@ -1578,7 +1795,26 @@ footer{
 /* ─── Translations ─── */
 const i18n = {
 es:{
-  nav_home:'Inicio', nav_schedule:'Programa', nav_travel:'Viaje', nav_registry:'Regalos',
+  nav_home:'Inicio', nav_schedule:'Programa', nav_travel:'Viaje', nav_rsvp:'RSVP', nav_registry:'Regalos',
+  rsvp_eyebrow:'RSVP', rsvp_sub:'Confirma tu asistencia',
+  rsvp_lead:'Cada invitado recibió un código único. Introdúcelo aquí para confirmar tu asistencia.',
+  rsvp_placeholder:'Tu código', rsvp_btn:'Confirmar',
+  rsvp_invalid:'Código no reconocido. Comprueba que está bien escrito o contacta con nosotros.',
+  rsvp_contact_note:'Si hay algún error en los nombres o en el número de pases, por favor contáctanos.',
+  rsvp_confirm_q:'Por favor confirma tu asistencia',
+  rsvp_yes_btn:'Sí, allí estaré',
+  rsvp_no_btn:'No podré asistir',
+  rsvp_yes_done:'¡Nos vemos en Quito! Estamos muy emocionados de celebrar contigo ese día.',
+  rsvp_no_done:'Gracias por avisarnos. Te echaremos mucho de menos ese día.',
+  rsvp_q_dietary:'¿Tiene alguien alguna restricción alimentaria? Por favor indica cuáles y quiénes (sé explícito)',
+  rsvp_q_dietary_ph:'Ej: Ana es celíaca, Pedro alérgico a los frutos secos...',
+  rsvp_q_transport:'¿Necesitas transporte de la iglesia a la quinta?',
+  rsvp_q_message:'Mensaje, sugerencia de canciones, juegos, comentarios o dudas',
+  rsvp_q_message_ph:'Todo lo que quieras contarnos...',
+  rsvp_si:'Sí', rsvp_no_short:'No', rsvp_submit:'Enviar', rsvp_back:'Volver',
+  rsvp_clear:'Usar otro código', rsvp_edit:'Modificar respuesta',
+  rsvp_s_attendance:'Asistencia', rsvp_s_confirmed:'Confirmada', rsvp_s_declined:'No asistirás',
+  rsvp_s_dietary:'Restricciones', rsvp_s_transport:'Transporte', rsvp_s_message:'Mensaje',
   countdown_label:'días para la boda',
   schedule_eyebrow:'19 de Diciembre, 2026',
   schedule_title:'El Programa',
@@ -1757,7 +1993,26 @@ es:{
   footer_love:'Hecho con amor ♥',
 },
 en:{
-  nav_home:'Home', nav_schedule:'Schedule', nav_travel:'Travel', nav_registry:'Gifts',
+  nav_home:'Home', nav_schedule:'Schedule', nav_travel:'Travel', nav_rsvp:'RSVP', nav_registry:'Gifts',
+  rsvp_eyebrow:'RSVP', rsvp_sub:'Confirm your attendance',
+  rsvp_lead:'Every guest received a unique code. Enter it here to confirm your attendance.',
+  rsvp_placeholder:'Your code', rsvp_btn:'Confirm',
+  rsvp_invalid:'Code not recognised. Double-check the spelling or get in touch with us.',
+  rsvp_contact_note:'If there is any mistake in the names or number of passes, please get in touch with us.',
+  rsvp_confirm_q:'Please confirm your attendance',
+  rsvp_yes_btn:'Yes, I\'ll be there',
+  rsvp_no_btn:'I can\'t make it',
+  rsvp_yes_done:'See you in Quito! We\'re so excited to celebrate with you.',
+  rsvp_no_done:'Thank you for letting us know. We\'ll miss you on the day.',
+  rsvp_q_dietary:'Does anyone have dietary restrictions? Please specify who and what (be specific)',
+  rsvp_q_dietary_ph:'E.g. Ana is coeliac, Pedro is allergic to nuts...',
+  rsvp_q_transport:'Do you need transport from the church to the venue?',
+  rsvp_q_message:'Message, song suggestions, games, comments or questions',
+  rsvp_q_message_ph:'Anything you\'d like to share with us...',
+  rsvp_si:'Yes', rsvp_no_short:'No', rsvp_submit:'Send', rsvp_back:'Go back',
+  rsvp_clear:'Use a different code', rsvp_edit:'Edit response',
+  rsvp_s_attendance:'Attendance', rsvp_s_confirmed:'Confirmed', rsvp_s_declined:'Not attending',
+  rsvp_s_dietary:'Restrictions', rsvp_s_transport:'Transport', rsvp_s_message:'Message',
   countdown_label:'days until the wedding',
   schedule_eyebrow:'December 19th, 2026',
   schedule_title:'The Schedule',
@@ -1936,7 +2191,26 @@ en:{
   footer_love:'Made with love ♥',
 },
 pt:{
-  nav_home:'Início', nav_schedule:'Programa', nav_travel:'Viagem', nav_registry:'Presentes',
+  nav_home:'Início', nav_schedule:'Programa', nav_travel:'Viagem', nav_rsvp:'RSVP', nav_registry:'Presentes',
+  rsvp_eyebrow:'RSVP', rsvp_sub:'Confirme sua presença',
+  rsvp_lead:'Cada convidado recebeu um código único. Insira-o aqui para confirmar sua presença.',
+  rsvp_placeholder:'Seu código', rsvp_btn:'Confirmar',
+  rsvp_invalid:'Código não reconhecido. Verifique se está correto ou entre em contato conosco.',
+  rsvp_contact_note:'Se houver algum erro nos nomes ou no número de convites, por favor entre em contato conosco.',
+  rsvp_confirm_q:'Por favor confirme sua presença',
+  rsvp_yes_btn:'Sim, estarei lá',
+  rsvp_no_btn:'Não poderei ir',
+  rsvp_yes_done:'Até Quito! Estamos muito animados para celebrar com você.',
+  rsvp_no_done:'Obrigado por nos avisar. Vamos sentir muito a sua falta.',
+  rsvp_q_dietary:'Alguém tem restrição alimentar? Por favor, indique quem e quais (seja específico)',
+  rsvp_q_dietary_ph:'Ex: Ana é celíaca, Pedro é alérgico a castanhas...',
+  rsvp_q_transport:'Precisa de transporte da igreja até o local da festa?',
+  rsvp_q_message:'Mensagem, sugestão de músicas, jogos, comentários ou dúvidas',
+  rsvp_q_message_ph:'Tudo o que quiser nos contar...',
+  rsvp_si:'Sim', rsvp_no_short:'Não', rsvp_submit:'Enviar', rsvp_back:'Voltar',
+  rsvp_clear:'Usar outro código', rsvp_edit:'Modificar resposta',
+  rsvp_s_attendance:'Presença', rsvp_s_confirmed:'Confirmada', rsvp_s_declined:'Não comparecerá',
+  rsvp_s_dietary:'Restrições', rsvp_s_transport:'Transporte', rsvp_s_message:'Mensagem',
   countdown_label:'dias para o casamento',
   schedule_eyebrow:'19 de Dezembro, 2026',
   schedule_title:'O Programa',
@@ -2125,6 +2399,10 @@ function setLang(l){
     const k = el.getAttribute('data-i18n');
     if(i18n[l][k] !== undefined) el.textContent = i18n[l][k];
   });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-placeholder');
+    if(i18n[l][k] !== undefined) el.placeholder = i18n[l][k];
+  });
   document.querySelectorAll('.lang-btn').forEach(b=>{
     b.classList.toggle('active', b.textContent.toLowerCase() === l);
   });
@@ -2210,6 +2488,7 @@ const carouselSources = {
     {src:'centro historico daniel y maria 3.jpeg', label:'Maria & Daniel — capilla colonial'},
   ],
 };
+
 
 function carouselInit(id, count){
   carouselState[id] = {idx:0, count};
@@ -2346,5 +2625,6 @@ const observer = new IntersectionObserver((entries)=>{
 
 document.querySelectorAll('.fade-in,.timeline-item').forEach(el=>observer.observe(el));
 </script>
+<script src="rsvp.js"></script>
 </body>
 </html>
