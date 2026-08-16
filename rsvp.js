@@ -14,9 +14,9 @@
   document.getElementById('rsvp-code-input').value = code.toUpperCase();
   if (!fromUrl) document.getElementById('rsvp-clear-wrap').style.display = 'block';
 
-  window.addEventListener('load', function () {
-    document.getElementById('rsvp').scrollIntoView({ behavior: 'smooth' });
-    if (fromUrl) setTimeout(rsvpCheckCode, 500); // auto-submit only from URL
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('rsvp').scrollIntoView({ behavior: 'instant' });
+    if (fromUrl) setTimeout(rsvpCheckCode, 300);
   });
 })();
 
