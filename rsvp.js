@@ -226,6 +226,80 @@ function rsvpClearCode() {
   document.getElementById('rsvp-code-input').focus();
 }
 
+// ── Bank data ────────────────────────────────────────────────────────────────
+
+const BANK_META = [
+  { flag: '🇪🇨', country: 'Ecuador'       },
+  { flag: '🇪🇺', country: 'Europa'          },
+  { flag: '🇺🇸', country: 'Estados Unidos' }
+];
+
+const BANK_FIELD_LABELS = {
+  beneficiario:   'Beneficiario',
+  numero_cuenta:  'Número de cuenta',
+  tipo_de_cuenta: 'Tipo de cuenta',
+  cedula:         'Cédula',
+  email:          'Email',
+  iban:           'IBAN',
+  codigo_swift:   'SWIFT'
+};
+
+function parseBankInfo(str) {
+  if (!str) return {};
+  try {
+    // API returns Python-dict strings: replace single quotes and normalise spacing
+    const json = str
+      .replace(/'/g, '"')          // single → double quotes
+      .replace(/:\s*"/g, ': "')    // normalise spacing around colons
+      .replace(/},\s*$/, '}')      // trim trailing comma if any
+      .trim();
+    return JSON.parse(json);
+  } catch (e) {
+    // Fallback: extract key:value pairs with a regex
+    const result = {};
+    const re = /'?(\w+)'?\s*:\s*'([^']*)'/g;
+    let m;
+    while ((m = re.exec(str)) !== null) result[m[1]] = m[2];
+    return result;
+  }
+}
+
+async function loadBankData() {
+  const grid = document.getElementById('bank-grid');
+  if (!grid) return;
+  try {
+    const res   = await fetch(`${RSVP_ENDPOINT}?endpoint=banks`);
+    const text  = await res.text();
+    const banks = JSON.parse(text);
+    if (!Array.isArray(banks) || banks.length === 0) return;
+
+    grid.innerHTML = banks.map(function (bank, i) {
+      const meta = BANK_META[i] || { flag: '', country: '' };
+      const info = parseBankInfo(bank.information);
+
+      const rows = Object.entries(info).map(function ([key, val]) {
+        const label = BANK_FIELD_LABELS[key] || key;
+        return `<div class="bank-row">
+          <span class="bank-lbl">${label}</span>
+          <span class="bank-val">${val}</span>
+        </div>`;
+      }).join('');
+
+      return `<div class="bank-card">
+        <div class="bank-flag">${meta.flag}</div>
+        <div class="bank-country">${meta.country}</div>
+        <div class="bank-name">${bank.banco}</div>
+        <div class="bank-divider"></div>
+        ${rows}
+      </div>`;
+    }).join('');
+
+  } catch (e) { /* leave placeholder cards on error */ }
+}
+
+// Call directly — DOM is ready since this script is at end of <body>
+loadBankData();
+
 // ── Utility ──────────────────────────────────────────────────────────────────
 
 function rsvpShow(id) {

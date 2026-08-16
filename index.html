@@ -399,6 +399,11 @@ body{
 .hotel-meta-icon{font-size:.8rem;width:1rem;text-align:center;flex-shrink:0}
 .hotel-meta-row a{color:var(--sage);text-decoration:none}
 .hotel-meta-row a:hover{text-decoration:underline}
+.hotel-discount-note{
+  font-size:.75rem;font-style:italic;color:var(--gold);
+  border-left:2px solid var(--gold);padding-left:.7rem;
+  margin:.8rem 0;line-height:1.6;
+}
 .hotel-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:auto}
 
 .btn{
@@ -959,7 +964,7 @@ footer{
 
       <div class="timeline-item">
         <div class="timeline-dot"></div>
-        <div class="timeline-time">8:00 PM</div>
+        <div class="timeline-time">7:30 PM</div>
         <div class="timeline-event" data-i18n="ev_dinner">Recepción de Cena</div>
       </div>
 
@@ -1075,15 +1080,24 @@ footer{
               </div>
               <div class="hotel-meta-row">
                 <span class="hotel-meta-icon">🌐</span>
-                <a href="http://www.gardenhotelsanjose.com/" target="_blank" rel="noopener">gardenhotelsanjose.com</a>
+                <a href="https://www.sanjosedepuembo.com" target="_blank" rel="noopener">sanjosedepuembo.com</a>
               </div>
               <div class="hotel-meta-row">
                 <span class="hotel-meta-icon">📞</span>
-                <a href="tel:+59322390264">+593 2 239 0264</a>
+                <a href="tel:+593995950908">+593 99 595 0908</a>
+              </div>
+              <div class="hotel-meta-row">
+                <span class="hotel-meta-icon">✉</span>
+                <a href="mailto:comercial@sanjosedepuembo.com">comercial@sanjosedepuembo.com</a>
+              </div>
+              <div class="hotel-meta-row">
+                <span class="hotel-meta-icon">👤</span>
+                <span>Luis Revelo</span>
               </div>
             </div>
+            <p class="hotel-discount-note" data-i18n="sanjose_discount">Este hotel ofrece una tarifa especial para los invitados de la boda. Menciona la boda al contactarles.</p>
             <div class="hotel-actions">
-              <a href="http://www.gardenhotelsanjose.com/" target="_blank" rel="noopener" class="btn btn-sage btn-sm" data-i18n="hotel_website_btn">Ver sitio web</a>
+              <a href="https://www.sanjosedepuembo.com" target="_blank" rel="noopener" class="btn btn-sage btn-sm" data-i18n="hotel_website_btn">Ver sitio web</a>
               <a href="https://maps.app.goo.gl/LYT5NfQuXbzUGmGEA" target="_blank" rel="noopener" class="btn btn-sage btn-sm" data-i18n="hotel_map_btn">Mapa</a>
             </div>
           </div>
@@ -1749,30 +1763,30 @@ footer{
     <p class="registry-bank-label fade-in" data-i18n="reg_bank_label">Cuentas bancarias</p>
 
     <!-- Bank account cards -->
-    <div class="bank-grid">
+    <div class="bank-grid" id="bank-grid">
 
       <div class="bank-card fade-in">
         <div class="bank-flag">🇪🇨</div>
         <div class="bank-country">Ecuador</div>
         <div class="bank-name">Banco Procredit S.A.</div>
         <div class="bank-divider"></div>
-        <div class="bank-coming" data-i18n="bank_soon">🔧 Detalles próximamente</div>
+        <div class="bank-coming" data-i18n="bank_soon">Cargando...</div>
       </div>
 
       <div class="bank-card fade-in">
-        <div class="bank-flag">🇪🇺</div>
+        <div class="bank-flag">🇵🇹</div>
         <div class="bank-country">Europa</div>
-        <div class="bank-name">Revolut Bank</div>
+        <div class="bank-name">Banco ActivoBank S.A.</div>
         <div class="bank-divider"></div>
-        <div class="bank-coming" data-i18n="bank_soon">🔧 Detalles próximamente</div>
+        <div class="bank-coming" data-i18n="bank_soon">Cargando...</div>
       </div>
 
       <div class="bank-card fade-in">
         <div class="bank-flag">🇺🇸</div>
         <div class="bank-country">Estados Unidos</div>
-        <div class="bank-name">JP Morgan</div>
+        <div class="bank-name">Bank of America</div>
         <div class="bank-divider"></div>
-        <div class="bank-coming" data-i18n="bank_soon">🔧 Detalles próximamente</div>
+        <div class="bank-coming" data-i18n="bank_soon">Cargando...</div>
       </div>
 
     </div>
@@ -1849,6 +1863,7 @@ es:{
   hotel_badge_closest:'⭐ A minutos caminando del lugar',
   hotel_badge_tumbaco:'🌿 Junto al centro de Tumbaco',
   sanjose_tagline:'Hacienda colonial del siglo XVII · Puembo, Valle de Tumbaco',
+  sanjose_discount:'Este hotel ofrece una tarifa especial para los invitados de la boda. Menciona la boda al contactarles.',
   sanjose_desc:'Situado a tan solo 15 minutos del Aeropuerto Internacional de Quito, el San José de Puembo es un refugio elegante que fusiona la comodidad moderna con el encanto colonial de su entorno sereno. La casa principal data del siglo XVII y conserva paredes de adobe, columnas de capulí y bellas pinturas coloniales — una experiencia única a pasos de nuestra celebración.',
   ilalo_tagline:'Hotel boutique tranquilo · Tumbaco, Quito',
   ilalo_desc:'A pocos minutos del vibrante centro de Tumbaco, el Ilalo Garden es un oasis de tranquilidad y serenidad. Combina habitaciones modernas y bien equipadas con un ambiente íntimo y natural, convirtiéndolo en el refugio ideal para descansar entre los festejos.',
@@ -2047,6 +2062,7 @@ en:{
   hotel_badge_closest:'⭐ Walking distance from the venue',
   hotel_badge_tumbaco:'🌿 Next to Tumbaco town center',
   sanjose_tagline:'17th-century colonial hacienda · Puembo, Tumbaco Valley',
+  sanjose_discount:'This hotel offers a special rate for wedding guests. Mention the wedding when you get in touch.',
   sanjose_desc:'Located just 15 minutes from Quito International Airport, San José de Puembo is an elegant retreat that blends modern comfort with the charm of its serene colonial surroundings. The main house dates from the 17th century and preserves original adobe walls, capulí wood columns, and beautiful colonial paintings — a unique experience steps away from our celebration.',
   ilalo_tagline:'Quiet boutique hotel · Tumbaco, Quito',
   ilalo_desc:'Just minutes from the vibrant center of Tumbaco, Ilalo Garden is an oasis of calm and serenity. It combines modern, well-appointed rooms with an intimate natural setting — the ideal retreat to rest and recharge between celebrations.',
@@ -2245,6 +2261,7 @@ pt:{
   hotel_badge_closest:'⭐ A poucos minutos a pé do local',
   hotel_badge_tumbaco:'🌿 Ao lado do centro de Tumbaco',
   sanjose_tagline:'Fazenda colonial do século XVII · Puembo, Vale de Tumbaco',
+  sanjose_discount:'Este hotel oferece uma tarifa especial para os convidados do casamento. Mencione o casamento ao entrar em contato.',
   sanjose_desc:'Localizado a apenas 15 minutos do Aeroporto Internacional de Quito, o San José de Puembo é um refúgio elegante que combina conforto moderno com o charme colonial do seu entorno sereno. A casa principal data do século XVII e preserva paredes de adobe, colunas de madeira capulí e belas pinturas coloniais — uma experiência única a passos da nossa celebração.',
   ilalo_tagline:'Hotel boutique tranquilo · Tumbaco, Quito',
   ilalo_desc:'A poucos minutos do vibrante centro de Tumbaco, o Ilalo Garden é um oásis de tranquilidade e serenidade. Combina quartos modernos e bem equipados com um ambiente íntimo e natural — o refúgio ideal para descansar entre as comemorações.',
