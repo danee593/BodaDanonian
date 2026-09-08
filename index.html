@@ -478,6 +478,7 @@ body{
 .place-carousel .carousel-track{height:100%;min-height:inherit}
 .place-carousel .carousel-slide{min-width:100%;height:100%;min-height:inherit;flex-shrink:0;position:relative}
 .place-carousel .carousel-slide img{width:100%;height:100%;min-height:inherit;object-fit:cover;display:block;position:absolute;inset:0}
+.place-carousel .carousel-slide video{width:100%;height:100%;min-height:inherit;object-fit:cover;display:block;position:absolute;inset:0}
 
 .place-video-wrap{
   position:relative;overflow:hidden;
@@ -497,6 +498,13 @@ body{
 }
 .carousel-credit-badge:hover{color:#fff}
 .carousel-credit-badge.hidden{opacity:0;pointer-events:none}
+.carousel-video-badge{
+  position:absolute;top:.6rem;left:.6rem;z-index:3;
+  font-size:.58rem;letter-spacing:.08em;
+  background:rgba(0,0,0,.5);color:#fff;
+  padding:.25rem .5rem;border-radius:999px;
+  backdrop-filter:blur(4px);pointer-events:none;
+}
 
 .place-info{
   padding:1.4rem 1.6rem;
@@ -829,6 +837,7 @@ footer{
     <li><a href="#schedule" data-i18n="nav_schedule" onclick="closeMenu()">Programa</a></li>
     <li><a href="#travel"      data-i18n="nav_travel"      onclick="closeMenu()">Viaje</a></li>
     <li><a href="#quehacemos" data-i18n="nav_quehacemos" onclick="closeMenu()">Quito</a></li>
+    <li><a href="#ecuador"    data-i18n="nav_ecuador"    onclick="closeMenu()">Ecuador</a></li>
     <li><a href="#dresscode"   data-i18n="nav_dresscode"   onclick="closeMenu()">Vestimenta</a></li>
     <li><a href="#rsvp"       data-i18n="nav_rsvp"       onclick="closeMenu()">RSVP</a></li>
     <li><a href="#registry"   data-i18n="nav_registry"   onclick="closeMenu()">Regalos</a></li>
@@ -1165,6 +1174,7 @@ footer{
   <button class="lightbox-close" onclick="lbClose()" aria-label="Cerrar">&#10005;</button>
   <button class="lightbox-nav lb-prev" onclick="event.stopPropagation();lbMove(-1)" aria-label="Anterior">&#8249;</button>
   <img class="lightbox-img" id="lbImg" src="" alt="">
+  <video class="lightbox-img" id="lbVideo" controls playsinline style="display:none" onclick="event.stopPropagation()"></video>
   <button class="lightbox-nav lb-next" onclick="event.stopPropagation();lbMove(1)" aria-label="Siguiente">&#8250;</button>
   <div class="lightbox-caption" id="lbCaption"></div>
   <div class="lightbox-counter" id="lbCounter"></div>
@@ -1655,6 +1665,228 @@ footer{
   </div>
 </section>
 
+<!-- ──────────── ECUADOR ──────────── -->
+<section id="ecuador" class="section">
+  <div class="section-inner">
+    <p class="eyebrow" data-i18n="ecuador_eyebrow">Más allá de Quito</p>
+    <h2 class="section-title" data-i18n="ecuador_title">Ecuador</h2>
+    <p class="section-lead" data-i18n="ecuador_lead">Si tienen más días, Ecuador entero los espera: volcanes, selva, mercados y las islas encantadas. Estos son nuestros imperdibles.</p>
+
+    <!-- ── Galápagos ── -->
+    <div class="place-card fade-in">
+
+      <div class="place-carousel" id="carousel-galapagos"
+           onclick="lbOpenCarousel('galapagos')"
+           title="Ver en pantalla completa">
+        <div class="carousel-track" id="track-galapagos">
+          <div class="carousel-slide"><img src="galapagos_1.webp" alt="Galápagos, Islas Encantadas"></div>
+          <div class="carousel-slide"><img src="galapagos_2.webp" alt="Tortuga gigante de Galápagos"></div>
+          <div class="carousel-slide"><img src="galapagos_3.webp" alt="Costa y vida marina de Galápagos"></div>
+          <div class="carousel-slide"><video src="galapagos.mp4" title="Video de Galápagos" muted loop autoplay playsinline preload="metadata"></video><span class="carousel-video-badge">▶ video</span></div>
+        </div>
+        <button class="carousel-btn prev" onclick="event.stopPropagation();carouselMove('galapagos',-1)" aria-label="Anterior">&#8249;</button>
+        <button class="carousel-btn next" onclick="event.stopPropagation();carouselMove('galapagos', 1)" aria-label="Siguiente">&#8250;</button>
+        <div class="carousel-dots" id="dots-galapagos"></div>
+        <span class="carousel-zoom-hint" data-i18n="zoom_hint">⤢ ampliar</span>
+      </div>
+
+      <div class="place-info">
+        <span class="place-badge" data-i18n="gal_badge">Islas Encantadas · Patrimonio de la Humanidad</span>
+        <div class="place-name" data-i18n="gal_name">Galápagos</div>
+        <div class="place-tagline" data-i18n="gal_tagline">El laboratorio vivo de la evolución</div>
+        <div class="place-desc" data-i18n="gal_desc">A unos 1.000 km de la costa, Galápagos es un archipiélago volcánico único en el mundo y el lugar que inspiró a Charles Darwin su teoría de la evolución. Tortugas gigantes, iguanas marinas, piqueros de patas azules y leones marinos conviven sin miedo al ser humano, en un escenario que parece de otro planeta.</div>
+
+        <div class="place-highlights">
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="gal_h1_title">Tortugas gigantes</span> — <span data-i18n="gal_h1_desc">los famosos «galápagos» que dan nombre a las islas, símbolo vivo del archipiélago.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="gal_h2_title">Especies endémicas</span> — <span data-i18n="gal_h2_desc">iguanas marinas —únicas en el mundo—, pinzones de Darwin, pingüinos y piqueros de patas azules.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="gal_h3_title">Darwin y la evolución</span> — <span data-i18n="gal_h3_desc">en 1835, a bordo del HMS Beagle, Darwin estudió aquí la selección natural que cambió la ciencia.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="gal_h4_title">Snorkel y playas</span> — <span data-i18n="gal_h4_desc">nadar con leones marinos, tortugas marinas y tiburones en aguas cristalinas.</span></span>
+          </div>
+        </div>
+
+        <p class="place-tip" data-i18n="gal_tip">Reserven con antelación — el parque limita el número de visitantes.</p>
+      </div>
+    </div>
+
+    <!-- ── Avenida de los Volcanes ── -->
+    <div class="place-card fade-in">
+
+      <div class="place-carousel" id="carousel-volcanes"
+           onclick="lbOpenCarousel('volcanes')"
+           title="Ver en pantalla completa">
+        <div class="carousel-track" id="track-volcanes">
+          <div class="carousel-slide"><img src="ruta_volcanes_1.jpg" alt="Avenida de los Volcanes, Ecuador"></div>
+          <div class="carousel-slide"><img src="ruta_volcanes_2.jpg" alt="Chimborazo, el punto más cercano al Sol"></div>
+          <div class="carousel-slide"><img src="ruta_volcanes_3.jpg" alt="Laguna de Quilotoa"></div>
+          <div class="carousel-slide"><img src="ruta_volcanes_4.jpg" alt="Cayambe, hielo sobre la línea ecuatorial"></div>
+        </div>
+        <button class="carousel-btn prev" onclick="event.stopPropagation();carouselMove('volcanes',-1)" aria-label="Anterior">&#8249;</button>
+        <button class="carousel-btn next" onclick="event.stopPropagation();carouselMove('volcanes', 1)" aria-label="Siguiente">&#8250;</button>
+        <div class="carousel-dots" id="dots-volcanes"></div>
+        <span class="carousel-zoom-hint" data-i18n="zoom_hint">⤢ ampliar</span>
+      </div>
+
+      <div class="place-info">
+        <span class="place-badge" data-i18n="vol_badge">Avenida de los Volcanes</span>
+        <div class="place-name" data-i18n="vol_name">Avenida de los Volcanes</div>
+        <div class="place-tagline" data-i18n="vol_tagline">La avenida de volcanes que asombró a Humboldt</div>
+        <div class="place-desc" data-i18n="vol_desc">Ecuador está atravesado por una hilera de volcanes andinos que Alexander von Humboldt bautizó como la «Avenida de los Volcanes». Del Cotopaxi —el volcán más famoso de Ecuador, con su cono nevado perfecto— al Chimborazo —el punto más cercano al Sol desde la Tierra—, cada cumbre es un paisaje distinto.</div>
+
+        <div class="place-highlights">
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="vol_h1_title">Chimborazo</span> — <span data-i18n="vol_h1_desc">con 6.263 m, su cumbre es el punto más alejado del centro de la Tierra: el punto más cercano al Sol.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="vol_h2_title">Cotopaxi</span> — <span data-i18n="vol_h2_desc">el volcán más famoso de Ecuador: un cono nevado casi perfecto de 5.897 m que se puede ascender con guía.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="vol_h3_title">Cayambe, Antisana y El Altar</span> — <span data-i18n="vol_h3_desc">hielo eterno sobre la línea ecuatorial, glaciares que dan agua a Quito y una caldera de lagunas multicolores.</span></span>
+          </div>
+        </div>
+
+        <p class="place-tip" data-i18n="vol_tip">Si tienen tiempo, dediquen un día a cada volcán o únanlos en la Avenida de los Volcanes — el amanecer desde el páramo es de otro planeta.</p>
+      </div>
+    </div>
+
+    <!-- ── Mindo ── -->
+    <div class="place-card fade-in">
+
+      <div class="place-carousel" id="carousel-mindo"
+           onclick="lbOpenCarousel('mindo')"
+           title="Ver en pantalla completa">
+        <div class="carousel-track" id="track-mindo">
+          <div class="carousel-slide"><img src="mindo_1.jpg" alt="Mindo, bosque nublado"></div>
+          <div class="carousel-slide"><img src="mindo_2.jpg" alt="Colibrí en Mindo"></div>
+          <div class="carousel-slide"><img src="mindo_3.jpg" alt="Cascadas de Mindo"></div>
+          <div class="carousel-slide"><img src="mindo_4.jpg" alt="Río Mindo"></div>
+        </div>
+        <button class="carousel-btn prev" onclick="event.stopPropagation();carouselMove('mindo',-1)" aria-label="Anterior">&#8249;</button>
+        <button class="carousel-btn next" onclick="event.stopPropagation();carouselMove('mindo', 1)" aria-label="Siguiente">&#8250;</button>
+        <div class="carousel-dots" id="dots-mindo"></div>
+        <a class="carousel-credit-badge" id="credit-mindo"
+           href="https://www.instagram.com/p/DWuYJlVkb7M/?img_index=9&stkn=MWRvNXRsNDQwbjZtMw=="
+           target="_blank" rel="noopener"
+           onclick="event.stopPropagation()">📷 Instagram</a>
+        <span class="carousel-zoom-hint" data-i18n="zoom_hint">⤢ ampliar</span>
+      </div>
+
+      <div class="place-info">
+        <span class="place-badge" data-i18n="mindo_badge">Bosque Nublado · Aves · Pichincha</span>
+        <div class="place-name" data-i18n="mindo_name">Mindo</div>
+        <div class="place-tagline" data-i18n="mindo_tagline">El bosque nublado de los colibríes</div>
+        <div class="place-desc" data-i18n="mindo_desc">A unos 80 km de Quito, Mindo es un bosque nublado del Chocó Andino y uno de los mejores destinos de observación de aves del planeta, con más de 500 especies. La observación de aves aquí está fuera de este mundo: muchísimas especies de cerca y algo nuevo que ver en cada rincón.</div>
+
+        <div class="place-highlights">
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="mindo_h1_title">Observación de aves</span> — <span data-i18n="mindo_h1_desc">de otro mundo: cientos de especies a muy poca distancia y algo distinto por descubrir a cada paso.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="mindo_h2_title">Dar de comer a las aves</span> — <span data-i18n="mindo_h2_desc">una experiencia en sí misma: quédate en silencio, extiende la mano y simplemente observa durante horas.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="mindo_h3_title">Aventura en el río</span> — <span data-i18n="mindo_h3_desc">nadar en el río Mindo, hacer tubing, lanzarse en canopy y recorrer senderos entre cascadas.</span></span>
+          </div>
+        </div>
+
+        <p class="place-tip" data-i18n="mindo_tip">Lleven ropa que se pueda mojar, binoculares y mucha calma. El secreto de Mindo es la quietud: las aves se acercan solas.</p>
+      </div>
+    </div>
+
+    <!-- ── Otavalo ── -->
+    <div class="place-card fade-in">
+
+      <div class="place-carousel" id="carousel-otavalo"
+           onclick="lbOpenCarousel('otavalo')"
+           title="Ver en pantalla completa">
+        <div class="carousel-track" id="track-otavalo">
+          <div class="carousel-slide"><img src="otavalo_1.webp" alt="Plaza de los Ponchos, Otavalo"></div>
+          <div class="carousel-slide"><img src="otavalo_3.webp" alt="Lago San Pablo e Imbabura"></div>
+          <div class="carousel-slide"><img src="otavalo_3.jpg" alt="Otavalo, valle de Imbabura"></div>
+        </div>
+        <button class="carousel-btn prev" onclick="event.stopPropagation();carouselMove('otavalo',-1)" aria-label="Anterior">&#8249;</button>
+        <button class="carousel-btn next" onclick="event.stopPropagation();carouselMove('otavalo', 1)" aria-label="Siguiente">&#8250;</button>
+        <div class="carousel-dots" id="dots-otavalo"></div>
+        <span class="carousel-zoom-hint" data-i18n="zoom_hint">⤢ ampliar</span>
+      </div>
+
+      <div class="place-info">
+        <span class="place-badge" data-i18n="ota_badge">Mercado artesanal · Imbabura</span>
+        <div class="place-name" data-i18n="ota_name">Otavalo</div>
+        <div class="place-tagline" data-i18n="ota_tagline">El mercado indígena más grande de Sudamérica</div>
+        <div class="place-desc" data-i18n="ota_desc">A unos 100 km al norte de Quito, Otavalo es la «Capital Intercultural del Ecuador» y cuna del pueblo quichua otavalo. Su Plaza de los Ponchos es el mercado artesanal indígena más grande de Sudamérica, y el valle entero —con el lago y el taita Imbabura vigilándolo— es uno de los rincones más bonitos de la sierra.</div>
+
+        <div class="place-highlights">
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="ota_h1_title">Plaza de los Ponchos</span> — <span data-i18n="ota_h1_desc">textiles, tapices, ponchos y artesanías; el mercado grande se arma sobre todo el sábado.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="ota_h2_title">Lago San Pablo</span> — <span data-i18n="ota_h2_desc">a los pies del volcán Imbabura, ideal para paseos en bote y diversión en el agua.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="ota_h3_title">Taita Imbabura</span> — <span data-i18n="ota_h3_desc">el volcán «padre» (4.630 m) que domina y protege el valle.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="ota_h4_title">Hacienda Cusín</span> — <span data-i18n="ota_h4_desc">hacienda histórica con jardines y una comida espectacular.</span></span>
+          </div>
+        </div>
+
+        <p class="place-tip" data-i18n="ota_tip">Vayan un sábado bien temprano para ver la feria en su esplendor, almuercen en la Hacienda Cusín y cierren el día junto al lago con el atardecer sobre el Imbabura.</p>
+      </div>
+    </div>
+
+    <!-- ── Yasuní ── -->
+    <div class="place-card fade-in">
+
+      <div class="place-carousel" id="carousel-yasuni"
+           onclick="lbOpenCarousel('yasuni')"
+           title="Ver en pantalla completa">
+        <div class="carousel-track" id="track-yasuni">
+          <div class="carousel-slide"><img src="yasuni_1.jpg" alt="Río Napo, Yasuní"></div>
+          <div class="carousel-slide"><img src="yasuni_2.jpeg" alt="Selva del Yasuní"></div>
+          <div class="carousel-slide"><img src="yasuni_3.jpg" alt="Pueblo huaorani, Yasuní"></div>
+          <div class="carousel-slide"><img src="yasuni_4.jpg" alt="Fauna del Yasuní"></div>
+        </div>
+        <button class="carousel-btn prev" onclick="event.stopPropagation();carouselMove('yasuni',-1)" aria-label="Anterior">&#8249;</button>
+        <button class="carousel-btn next" onclick="event.stopPropagation();carouselMove('yasuni', 1)" aria-label="Siguiente">&#8250;</button>
+        <div class="carousel-dots" id="dots-yasuni"></div>
+        <span class="carousel-zoom-hint" data-i18n="zoom_hint">⤢ ampliar</span>
+      </div>
+
+      <div class="place-info">
+        <span class="place-badge" data-i18n="yas_badge">Amazonía · Selva del Napo · Reserva de Biósfera</span>
+        <div class="place-name" data-i18n="yas_name">Yasuní</div>
+        <div class="place-tagline" data-i18n="yas_tagline">Sumérgete en la selva ecuatoriana</div>
+        <div class="place-desc" data-i18n="yas_desc">Sumérgete en la selva ecuatoriana, en el río Napo —uno de los grandes ríos que desemboca en el Amazonas— y descubre la zona más biodiversa del planeta. Navega por ríos de aguas negras entre monos, guacamayos y delfines rosados, y conoce al pueblo huaorani: sus costumbres y su lengua.</div>
+
+        <div class="place-highlights">
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="yas_h1_title">Río Napo</span> — <span data-i18n="yas_h1_desc">afluente directo del gran Amazonas; navegarlo es adentrarse en el corazón verde del planeta.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="yas_h2_title">Biodiversidad récord</span> — <span data-i18n="yas_h2_desc">más de 590 especies de aves, 150 anfibios y unos 200 mamíferos; la zona más biodiversa del mundo.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="yas_h3_title">Pueblo huaorani</span> — <span data-i18n="yas_h3_desc">conoce sus costumbres y su lengua (wuao terero), y su profundo vínculo con la selva.</span></span>
+          </div>
+          <div class="place-highlight">
+            <span><span class="place-hi-label" data-i18n="yas_h4_title">Tzantzas</span> — <span data-i18n="yas_h4_desc">la tradición de reducción de cabezas de los pueblos amazónicos —como los shuar—, símbolo de poder y espiritualidad.</span></span>
+          </div>
+        </div>
+
+        <p class="place-tip" data-i18n="yas_tip">Reserven un lodge ecológico con guías locales y salgan al amanecer en canoa — la selva despierta con un concierto de aves que no se olvida.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ──────────── DRESS CODE ──────────── -->
 <section id="dresscode" class="section section--alt">
   <div class="section-inner">
@@ -1819,7 +2051,7 @@ footer{
 /* ─── Translations ─── */
 const i18n = {
 es:{
-  nav_home:'Inicio', nav_schedule:'Programa', nav_dresscode:'Vestimenta', nav_travel:'Viaje', nav_rsvp:'RSVP', nav_registry:'Regalos',
+  nav_home:'Inicio', nav_schedule:'Programa', nav_dresscode:'Vestimenta', nav_travel:'Viaje', nav_rsvp:'RSVP', nav_registry:'Regalos', nav_ecuador:'Ecuador',
   rsvp_eyebrow:'RSVP', rsvp_sub:'Confirma tu asistencia',
   rsvp_lead:'Cada invitado recibió un código único en su invitación. Lo encuentras al final de la invitación — o más rápido aún, escanea el código QR o sigue el enlace que aparece en ella. Introdúcelo aquí para confirmar tu asistencia.',
   rsvp_placeholder:'Tu código', rsvp_btn:'Confirmar',
@@ -2009,6 +2241,70 @@ es:{
   ja_h3_title:'Educación ambiental',
   ja_h3_desc:'el proyecto educa sobre la riqueza biodiversa del Ecuador y la importancia de protegerla.',
   ja_tip:'Recomendamos especialmente asistir en un día de liberación — pregúntenles con antelación cuándo es el próximo. Es mágico.',
+  ecuador_eyebrow:'Más allá de Quito',
+  ecuador_title:'Ecuador',
+  ecuador_lead:'Si tienen más días, Ecuador entero los espera: volcanes, selva, mercados y las islas encantadas. Estos son nuestros imperdibles.',
+  vol_badge:'Avenida de los Volcanes',
+  vol_name:'Avenida de los Volcanes',
+  vol_tagline:'La avenida de volcanes que asombró a Humboldt',
+  vol_desc:'Ecuador está atravesado por una hilera de volcanes andinos que Alexander von Humboldt bautizó como la «Avenida de los Volcanes». Del Cotopaxi —el volcán más famoso de Ecuador, con su cono nevado perfecto— al Chimborazo —el punto más cercano al Sol desde la Tierra—, cada cumbre es un paisaje distinto.',
+  vol_h1_title:'Chimborazo',
+  vol_h1_desc:'con 6.263 m, su cumbre es el punto más alejado del centro de la Tierra: el punto más cercano al Sol.',
+  vol_h2_title:'Cotopaxi',
+  vol_h2_desc:'el volcán más famoso de Ecuador: un cono nevado casi perfecto de 5.897 m que se puede ascender con guía.',
+  vol_h3_title:'Cayambe, Antisana y El Altar',
+  vol_h3_desc:'hielo eterno sobre la línea ecuatorial, glaciares que dan agua a Quito y una caldera de lagunas multicolores.',
+  vol_tip:'Si tienen tiempo, dediquen un día a cada volcán o únanlos en la Avenida de los Volcanes — el amanecer desde el páramo es de otro planeta.',
+  mindo_badge:'Bosque Nublado · Aves · Pichincha',
+  mindo_name:'Mindo',
+  mindo_tagline:'El bosque nublado de los colibríes',
+  mindo_desc:'A unos 80 km de Quito, Mindo es un bosque nublado del Chocó Andino y uno de los mejores destinos de observación de aves del planeta, con más de 500 especies. La observación de aves aquí está fuera de este mundo: muchísimas especies de cerca y algo nuevo que ver en cada rincón.',
+  mindo_h1_title:'Observación de aves',
+  mindo_h1_desc:'de otro mundo: cientos de especies a muy poca distancia y algo distinto por descubrir a cada paso.',
+  mindo_h2_title:'Dar de comer a las aves',
+  mindo_h2_desc:'una experiencia en sí misma: quédate en silencio, extiende la mano y simplemente observa durante horas.',
+  mindo_h3_title:'Aventura en el río',
+  mindo_h3_desc:'nadar en el río Mindo, hacer tubing, lanzarse en canopy y recorrer senderos entre cascadas.',
+  mindo_tip:'Lleven ropa que se pueda mojar, binoculares y mucha calma. El secreto de Mindo es la quietud: las aves se acercan solas.',
+  ota_badge:'Mercado artesanal · Imbabura',
+  ota_name:'Otavalo',
+  ota_tagline:'El mercado indígena más grande de Sudamérica',
+  ota_desc:'A unos 100 km al norte de Quito, Otavalo es la «Capital Intercultural del Ecuador» y cuna del pueblo quichua otavalo. Su Plaza de los Ponchos es el mercado artesanal indígena más grande de Sudamérica, y el valle entero —con el lago y el taita Imbabura vigilándolo— es uno de los rincones más bonitos de la sierra.',
+  ota_h1_title:'Plaza de los Ponchos',
+  ota_h1_desc:'textiles, tapices, ponchos y artesanías; el mercado grande se arma sobre todo el sábado.',
+  ota_h2_title:'Lago San Pablo',
+  ota_h2_desc:'a los pies del volcán Imbabura, ideal para paseos en bote y diversión en el agua.',
+  ota_h3_title:'Taita Imbabura',
+  ota_h3_desc:'el volcán «padre» (4.630 m) que domina y protege el valle.',
+  ota_h4_title:'Hacienda Cusín',
+  ota_h4_desc:'hacienda histórica con jardines y una comida espectacular.',
+  ota_tip:'Vayan un sábado bien temprano para ver la feria en su esplendor, almuercen en la Hacienda Cusín y cierren el día junto al lago con el atardecer sobre el Imbabura.',
+  yas_badge:'Amazonía · Selva del Napo · Reserva de Biósfera',
+  yas_name:'Yasuní',
+  yas_tagline:'Sumérgete en la selva ecuatoriana',
+  yas_desc:'Sumérgete en la selva ecuatoriana, en el río Napo —uno de los grandes ríos que desemboca en el Amazonas— y descubre la zona más biodiversa del planeta. Navega por ríos de aguas negras entre monos, guacamayos y delfines rosados, y conoce al pueblo huaorani: sus costumbres y su lengua.',
+  yas_h1_title:'Río Napo',
+  yas_h1_desc:'afluente directo del gran Amazonas; navegarlo es adentrarse en el corazón verde del planeta.',
+  yas_h2_title:'Biodiversidad récord',
+  yas_h2_desc:'más de 590 especies de aves, 150 anfibios y unos 200 mamíferos; la zona más biodiversa del mundo.',
+  yas_h3_title:'Pueblo huaorani',
+  yas_h3_desc:'conoce sus costumbres y su lengua (wuao terero), y su profundo vínculo con la selva.',
+  yas_h4_title:'Tzantzas',
+  yas_h4_desc:'la tradición de reducción de cabezas de los pueblos amazónicos —como los shuar—, símbolo de poder y espiritualidad.',
+  yas_tip:'Reserven un lodge ecológico con guías locales y salgan al amanecer en canoa — la selva despierta con un concierto de aves que no se olvida.',
+  gal_badge:'Islas Encantadas · Patrimonio de la Humanidad',
+  gal_name:'Galápagos',
+  gal_tagline:'El laboratorio vivo de la evolución',
+  gal_desc:'A unos 1.000 km de la costa, Galápagos es un archipiélago volcánico único en el mundo y el lugar que inspiró a Charles Darwin su teoría de la evolución. Tortugas gigantes, iguanas marinas, piqueros de patas azules y leones marinos conviven sin miedo al ser humano, en un escenario que parece de otro planeta.',
+  gal_h1_title:'Tortugas gigantes',
+  gal_h1_desc:'los famosos «galápagos» que dan nombre a las islas, símbolo vivo del archipiélago.',
+  gal_h2_title:'Especies endémicas',
+  gal_h2_desc:'iguanas marinas —únicas en el mundo—, pinzones de Darwin, pingüinos y piqueros de patas azules.',
+  gal_h3_title:'Darwin y la evolución',
+  gal_h3_desc:'en 1835, a bordo del HMS Beagle, Darwin estudió aquí la selección natural que cambió la ciencia.',
+  gal_h4_title:'Snorkel y playas',
+  gal_h4_desc:'nadar con leones marinos, tortugas marinas y tiburones en aguas cristalinas.',
+  gal_tip:'Reserven con antelación — el parque limita el número de visitantes.',
   qh_more:'✦   Más lugares próximamente   ✦',
   reg_eyebrow:'Regalos',
   reg_title:'Luna de Miel',
@@ -2021,7 +2317,7 @@ es:{
   footer_love:'Hecho con amor ♥',
 },
 en:{
-  nav_home:'Home', nav_schedule:'Schedule', nav_dresscode:'Dress Code', nav_travel:'Travel', nav_rsvp:'RSVP', nav_registry:'Gifts',
+  nav_home:'Home', nav_schedule:'Schedule', nav_dresscode:'Dress Code', nav_travel:'Travel', nav_rsvp:'RSVP', nav_registry:'Gifts', nav_ecuador:'Ecuador',
   rsvp_eyebrow:'RSVP', rsvp_sub:'Confirm your attendance',
   rsvp_lead:'Every guest received a unique code in their invitation. You\'ll find it at the end of the invitation — or even faster, scan the QR code or follow the link printed on it. Enter it here to confirm your attendance.',
   rsvp_placeholder:'Your code', rsvp_btn:'Confirm',
@@ -2211,6 +2507,70 @@ en:{
   ja_h3_title:'Environmental education',
   ja_h3_desc:"the project raises awareness of Ecuador's extraordinary biodiversity and why protecting it matters.",
   ja_tip:"We especially recommend going on a release day — ask them in advance when the next one is. It's magical.",
+  ecuador_eyebrow:'Beyond Quito',
+  ecuador_title:'Ecuador',
+  ecuador_lead:'If you have a few extra days, all of Ecuador awaits: volcanoes, rainforest, markets and the enchanted isles. These are our must-sees.',
+  vol_badge:'Avenue of the Volcanoes',
+  vol_name:'Avenue of the Volcanoes',
+  vol_tagline:'The avenue of volcanoes that amazed Humboldt',
+  vol_desc:'Ecuador is crossed by a chain of Andean volcanoes that Alexander von Humboldt called the "Avenue of the Volcanoes". From Cotopaxi —the most famous volcano in Ecuador, with its perfect snow-capped cone— to Chimborazo —the closest point to the Sun on Earth—, every summit is a different landscape.',
+  vol_h1_title:'Chimborazo',
+  vol_h1_desc:'at 6,263 m, its summit is the farthest point from the centre of the Earth: the closest point to the Sun.',
+  vol_h2_title:'Cotopaxi',
+  vol_h2_desc:'the most famous volcano in Ecuador: a near-perfect snow-capped cone at 5,897 m that can be climbed with a guide.',
+  vol_h3_title:'Cayambe, Antisana & El Altar',
+  vol_h3_desc:'eternal ice on the equator, glaciers that water Quito, and a caldera of multicoloured lakes.',
+  vol_tip:'If you have time, give each volcano a day or link them along the Avenue of the Volcanoes — sunrise from the páramo is out of this world.',
+  mindo_badge:'Cloud Forest · Birds · Pichincha',
+  mindo_name:'Mindo',
+  mindo_tagline:'The cloud forest of the hummingbirds',
+  mindo_desc:'About 80 km from Quito, Mindo is a cloud forest in the Chocó Andino and one of the best birdwatching destinations on the planet, with more than 500 species. Birdwatching here is out of this world — so many species up close and something new to see at every turn.',
+  mindo_h1_title:'Birdwatching',
+  mindo_h1_desc:'out of this world: hundreds of species at close range and something different to discover at every step.',
+  mindo_h2_title:'Feeding the birds',
+  mindo_h2_desc:'an experience in itself: stay in silence, hold out your hand and simply watch for hours.',
+  mindo_h3_title:'River adventure',
+  mindo_h3_desc:'swim in the Mindo river, go tubing, fly through the canopy and hike trails between waterfalls.',
+  mindo_tip:'Bring clothes you can get wet, binoculars and plenty of calm. The secret of Mindo is stillness — the birds come to you on their own.',
+  ota_badge:'Artisan market · Imbabura',
+  ota_name:'Otavalo',
+  ota_tagline:'The largest indigenous market in South America',
+  ota_desc:'About 100 km north of Quito, Otavalo is Ecuador\'s "Intercultural Capital" and home of the Quichua Otavalo people. Its Plaza de los Ponchos is the largest indigenous artisan market in South America, and the whole valley —with the lake and taita Imbabura keeping watch— is one of the most beautiful corners of the highlands.',
+  ota_h1_title:'Plaza de los Ponchos',
+  ota_h1_desc:'textiles, tapestries, ponchos and crafts; the big market day is Saturday above all.',
+  ota_h2_title:'Lake San Pablo',
+  ota_h2_desc:'at the foot of Imbabura volcano, perfect for boat rides and fun on the water.',
+  ota_h3_title:'Taita Imbabura',
+  ota_h3_desc:'the "father" volcano (4,630 m) that dominates and protects the valley.',
+  ota_h4_title:'Hacienda Cusín',
+  ota_h4_desc:'a historic hacienda with gardens and spectacular food.',
+  ota_tip:'Go early on a Saturday to see the fair at its best, have lunch at Hacienda Cusín and end the day by the lake with the sunset over Imbabura.',
+  yas_badge:'Amazon · Napo rainforest · Biosphere Reserve',
+  yas_name:'Yasuní',
+  yas_tagline:'Immerse yourself in the Ecuadorian rainforest',
+  yas_desc:'Immerse yourself in the Ecuadorian rainforest, on the Napo river —one of the great rivers that flows into the Amazon— and discover the most biodiverse place on the planet. Glide along blackwater rivers among monkeys, macaws and pink river dolphins, and meet the Huaorani people: their customs and their language.',
+  yas_h1_title:'Río Napo',
+  yas_h1_desc:'a direct tributary of the great Amazon; navigating it is entering the green heart of the planet.',
+  yas_h2_title:'Record biodiversity',
+  yas_h2_desc:'more than 590 bird species, 150 amphibians and around 200 mammals; the most biodiverse place on Earth.',
+  yas_h3_title:'Huaorani people',
+  yas_h3_desc:'meet their customs and their language (wuao terero), and their deep bond with the forest.',
+  yas_h4_title:'Tzantzas',
+  yas_h4_desc:'the shrunken-head tradition of Amazonian peoples —such as the Shuar—, a symbol of power and spirituality.',
+  yas_tip:'Book an eco-lodge with local guides and head out by canoe at dawn — the rainforest wakes up with an unforgettable chorus of birds.',
+  gal_badge:'Enchanted Isles · World Heritage',
+  gal_name:'Galápagos',
+  gal_tagline:'The living laboratory of evolution',
+  gal_desc:'About 1,000 km off the coast, Galápagos is a one-of-a-kind volcanic archipelago and the place that inspired Charles Darwin\'s theory of evolution. Giant tortoises, marine iguanas, blue-footed boobies and sea lions live unafraid of humans, in a landscape that feels like another planet.',
+  gal_h1_title:'Giant tortoises',
+  gal_h1_desc:'the famous "galápagos" that give the islands their name, the living symbol of the archipelago.',
+  gal_h2_title:'Endemic species',
+  gal_h2_desc:'marine iguanas —unique in the world—, Darwin\'s finches, penguins and blue-footed boobies.',
+  gal_h3_title:'Darwin & evolution',
+  gal_h3_desc:'in 1835, aboard HMS Beagle, Darwin studied the natural selection that changed science forever.',
+  gal_h4_title:'Snorkelling & beaches',
+  gal_h4_desc:'swim with sea lions, sea turtles and sharks in crystal-clear waters.',
+  gal_tip:'Book ahead — the park limits visitor numbers.',
   qh_more:'✦   More places coming soon   ✦',
   reg_eyebrow:'Gifts',
   reg_title:'Honeymoon Fund',
@@ -2223,7 +2583,7 @@ en:{
   footer_love:'Made with love ♥',
 },
 pt:{
-  nav_home:'Início', nav_schedule:'Programa', nav_dresscode:'Vestimenta', nav_travel:'Viagem', nav_rsvp:'RSVP', nav_registry:'Presentes',
+  nav_home:'Início', nav_schedule:'Programa', nav_dresscode:'Vestimenta', nav_travel:'Viagem', nav_rsvp:'RSVP', nav_registry:'Presentes', nav_ecuador:'Equador',
   rsvp_eyebrow:'RSVP', rsvp_sub:'Confirme sua presença',
   rsvp_lead:'Cada convidado recebeu um código único no seu convite. Você o encontra no final do convite — ou mais rápido ainda, escaneie o QR code ou siga o link que aparece nele. Insira-o aqui para confirmar sua presença.',
   rsvp_placeholder:'Seu código', rsvp_btn:'Confirmar',
@@ -2413,6 +2773,70 @@ pt:{
   ja_h3_title:'Educação ambiental',
   ja_h3_desc:'o projeto educa sobre a riqueza biodiversa do Equador e a importância de protegê-la.',
   ja_tip:'Recomendamos especialmente ir num dia de libertação — perguntem com antecedência quando será o próximo. É mágico.',
+  ecuador_eyebrow:'Além de Quito',
+  ecuador_title:'Equador',
+  ecuador_lead:'Se tiverem alguns dias a mais, o Equador inteiro espera por vocês: vulcões, selva, mercados e as ilhas encantadas. Estes são os nossos imperdíveis.',
+  vol_badge:'Avenida dos Vulcões',
+  vol_name:'Avenida dos Vulcões',
+  vol_tagline:'A avenida de vulcões que encantou Humboldt',
+  vol_desc:'O Equador é atravessado por uma cadeia de vulcões andinos que Alexander von Humboldt batizou de "Avenida dos Vulcões". Do Cotopaxi —o vulcão mais famoso do Equador, com o seu cone nevado perfeito— ao Chimborazo —o ponto mais próximo do Sol na Terra—, cada cume é uma paisagem diferente.',
+  vol_h1_title:'Chimborazo',
+  vol_h1_desc:'com 6.263 m, o seu cume é o ponto mais afastado do centro da Terra: o ponto mais próximo do Sol.',
+  vol_h2_title:'Cotopaxi',
+  vol_h2_desc:'o vulcão mais famoso do Equador: um cone nevado quase perfeito de 5.897 m que se pode subir com guia.',
+  vol_h3_title:'Cayambe, Antisana e El Altar',
+  vol_h3_desc:'gelo eterno sobre a linha do equador, glaciares que abastecem Quito e uma caldeira de lagoas multicoloridas.',
+  vol_tip:'Se tiverem tempo, dediquem um dia a cada vulcão ou liguem-nos pela Avenida dos Vulcões — o amanhecer no páramo é de outro planeta.',
+  mindo_badge:'Floresta Nublada · Aves · Pichincha',
+  mindo_name:'Mindo',
+  mindo_tagline:'A floresta nublada dos beija-flores',
+  mindo_desc:'A cerca de 80 km de Quito, Mindo é uma floresta nublada do Chocó Andino e um dos melhores destinos de observação de aves do planeta, com mais de 500 espécies. A observação de aves aqui é de outro mundo: muitas espécies de perto e algo novo para ver em cada canto.',
+  mindo_h1_title:'Observação de aves',
+  mindo_h1_desc:'de outro mundo: centenas de espécies bem de perto e algo diferente para descobrir a cada passo.',
+  mindo_h2_title:'Dar de comer às aves',
+  mindo_h2_desc:'uma experiência em si mesma: fique em silêncio, estenda a mão e simplesmente observe durante horas.',
+  mindo_h3_title:'Aventura no rio',
+  mindo_h3_desc:'nadar no rio Mindo, fazer tubing, voar no canopy e percorrer trilhas entre cachoeiras.',
+  mindo_tip:'Levem roupa que possa molhar, binóculos e muita calma. O segredo de Mindo é a quietude: as aves aproximam-se sozinhas.',
+  ota_badge:'Mercado artesanal · Imbabura',
+  ota_name:'Otavalo',
+  ota_tagline:'O maior mercado indígena da América do Sul',
+  ota_desc:'A cerca de 100 km ao norte de Quito, Otavalo é a "Capital Intercultural do Equador" e berço do povo quíchua otavalo. A sua Plaza de los Ponchos é o maior mercado artesanal indígena da América do Sul, e todo o vale —com o lago e o taita Imbabura a vigiar— é um dos cantos mais bonitos da serra.',
+  ota_h1_title:'Plaza de los Ponchos',
+  ota_h1_desc:'têxteis, tapeçarias, ponchos e artesanato; o grande dia de mercado é sobretudo sábado.',
+  ota_h2_title:'Lago San Pablo',
+  ota_h2_desc:'aos pés do vulcão Imbabura, ideal para passeios de barco e diversão na água.',
+  ota_h3_title:'Taita Imbabura',
+  ota_h3_desc:'o vulcão "pai" (4.630 m) que domina e protege o vale.',
+  ota_h4_title:'Hacienda Cusín',
+  ota_h4_desc:'uma fazenda histórica com jardins e uma comida espetacular.',
+  ota_tip:'Vão cedo num sábado para ver a feira no seu auge, almocem na Hacienda Cusín e terminem o dia junto ao lago com o pôr do sol sobre o Imbabura.',
+  yas_badge:'Amazônia · Selva do Napo · Reserva da Biosfera',
+  yas_name:'Yasuní',
+  yas_tagline:'Mergulhe na selva equatoriana',
+  yas_desc:'Mergulhe na selva equatoriana, no rio Napo —um dos grandes rios que desagua no Amazonas— e descubra a zona mais biodiversa do planeta. Navegue por rios de águas negras entre macacos, araras e golfinhos cor-de-rosa, e conheça o povo huaorani: os seus costumes e a sua língua.',
+  yas_h1_title:'Rio Napo',
+  yas_h1_desc:'afluente direto do grande Amazonas; navegá-lo é entrar no coração verde do planeta.',
+  yas_h2_title:'Biodiversidade recorde',
+  yas_h2_desc:'mais de 590 espécies de aves, 150 anfíbios e cerca de 200 mamíferos; a zona mais biodiversa do mundo.',
+  yas_h3_title:'Povo huaorani',
+  yas_h3_desc:'conheça os seus costumes e a sua língua (wuao terero), e o seu profundo vínculo com a floresta.',
+  yas_h4_title:'Tzantzas',
+  yas_h4_desc:'a tradição de redução de cabeças dos povos amazônicos —como os shuar—, símbolo de poder e espiritualidade.',
+  yas_tip:'Reservem um eco-lodge com guias locais e saiam de canoa ao amanhecer — a selva acorda com um coro de aves inesquecível.',
+  gal_badge:'Ilhas Encantadas · Patrimônio Mundial',
+  gal_name:'Galápagos',
+  gal_tagline:'O laboratório vivo da evolução',
+  gal_desc:'A cerca de 1.000 km da costa, Galápagos é um arquipélago vulcânico único no mundo e o lugar que inspirou a teoria da evolução de Charles Darwin. Tartarugas gigantes, iguanas marinhas, atobás de patas azuis e leões-marinhos convivem sem medo dos humanos, num cenário que parece de outro planeta.',
+  gal_h1_title:'Tartarugas gigantes',
+  gal_h1_desc:'os famosos "galápagos" que dão nome às ilhas, símbolo vivo do arquipélago.',
+  gal_h2_title:'Espécies endêmicas',
+  gal_h2_desc:'iguanas marinhas —únicas no mundo—, tentilhões de Darwin, pinguins e atobás de patas azuis.',
+  gal_h3_title:'Darwin e a evolução',
+  gal_h3_desc:'em 1835, a bordo do HMS Beagle, Darwin estudou aqui a seleção natural que mudou a ciência.',
+  gal_h4_title:'Snorkel e praias',
+  gal_h4_desc:'nadar com leões-marinhos, tartarugas marinhas e tubarões em águas cristalinas.',
+  gal_tip:'Reservem com antecedência — o parque limita o número de visitantes.',
   qh_more:'✦   Mais lugares em breve   ✦',
   reg_eyebrow:'Presentes',
   reg_title:'Lua de Mel',
@@ -2523,6 +2947,35 @@ const carouselSources = {
     {src:'centro historico daniel y maria 2.jpeg', label:'Maria & Daniel — cúpula de La Catedral'},
     {src:'centro historico daniel y maria 3.jpeg', label:'Maria & Daniel — capilla colonial'},
   ],
+  volcanes:[
+    {src:'ruta_volcanes_1.jpg', label:'Avenida de los Volcanes — Andes ecuatorianos'},
+    {src:'ruta_volcanes_2.jpg', label:'Chimborazo — el punto más cercano al Sol'},
+    {src:'ruta_volcanes_3.jpg', label:'Quilotoa — caldera turquesa'},
+    {src:'ruta_volcanes_4.jpg', label:'Cayambe — hielo sobre la línea ecuatorial'},
+  ],
+  mindo:[
+    {src:'mindo_1.jpg', label:'Mindo — bosque nublado', credit:'Instagram', creditUrl:'https://www.instagram.com/p/DWuYJlVkb7M/?img_index=9&stkn=MWRvNXRsNDQwbjZtMw=='},
+    {src:'mindo_2.jpg', label:'Colibrí en Mindo', credit:'Instagram', creditUrl:'https://www.instagram.com/p/DWuYJlVkb7M/?img_index=9&stkn=MWRvNXRsNDQwbjZtMw=='},
+    {src:'mindo_3.jpg', label:'Cascadas de Mindo', credit:'Instagram', creditUrl:'https://www.instagram.com/p/DWuYJlVkb7M/?img_index=9&stkn=MWRvNXRsNDQwbjZtMw=='},
+    {src:'mindo_4.jpg', label:'Río Mindo', credit:'Instagram', creditUrl:'https://www.instagram.com/p/DWuYJlVkb7M/?img_index=9&stkn=MWRvNXRsNDQwbjZtMw=='},
+  ],
+  otavalo:[
+    {src:'otavalo_1.webp', label:'Plaza de los Ponchos — Otavalo'},
+    {src:'otavalo_3.webp', label:'Lago San Pablo e Imbabura'},
+    {src:'otavalo_3.jpg',  label:'Otavalo — valle de Imbabura'},
+  ],
+  yasuni:[
+    {src:'yasuni_1.jpg',  label:'Río Napo — Yasuní'},
+    {src:'yasuni_2.jpeg', label:'Selva del Yasuní'},
+    {src:'yasuni_3.jpg',  label:'Pueblo huaorani — Yasuní'},
+    {src:'yasuni_4.jpg',  label:'Fauna del Yasuní'},
+  ],
+  galapagos:[
+    {src:'galapagos_1.webp', label:'Galápagos — Islas Encantadas'},
+    {src:'galapagos_2.webp', label:'Tortuga gigante de Galápagos'},
+    {src:'galapagos_3.webp', label:'Costa y vida marina de Galápagos'},
+    {src:'galapagos.mp4', label:'Galápagos — video', video:true},
+  ],
 };
 
 
@@ -2572,10 +3025,15 @@ carouselInit('chq', 4);
 carouselInit('gs', 5);
 carouselInit('mdm', 3);
 carouselInit('ch', 7);
+carouselInit('volcanes', 4);
+carouselInit('mindo', 4);
+carouselInit('otavalo', 3);
+carouselInit('yasuni', 4);
+carouselInit('galapagos', 4);
 
 /* ─── Equal card heights in Qué hacer section ─── */
 function equalizeCards(){
-  const cards = document.querySelectorAll('#quehacemos .place-card');
+  const cards = document.querySelectorAll('#quehacemos .place-card, #ecuador .place-card');
   cards.forEach(c => c.style.minHeight = '');
   if(window.innerWidth > 768){
     let max = 0;
@@ -2602,8 +3060,23 @@ function lbRender(){
   const label   = typeof slide === 'string' ? ''    : (slide.label || '');
   const credit  = typeof slide === 'string' ? null  : slide.credit;
   const creditUrl = typeof slide === 'string' ? null : slide.creditUrl;
+  const isVideo = typeof slide === 'object' && slide.video;
 
-  document.getElementById('lbImg').src = src;
+  const img = document.getElementById('lbImg');
+  const vid = document.getElementById('lbVideo');
+
+  if(isVideo){
+    img.style.display = 'none';
+    vid.style.display = 'block';
+    vid.src = src;
+  } else {
+    vid.pause();
+    vid.removeAttribute('src');
+    vid.style.display = 'none';
+    img.style.display = 'block';
+    img.src = src;
+  }
+
   document.getElementById('lbCaption').textContent = label;
   document.getElementById('lbCounter').textContent =
     lbSlides.length > 1 ? (lbIdx+1) + ' / ' + lbSlides.length : '';
@@ -2632,6 +3105,8 @@ function lbMove(dir){
 }
 
 function lbClose(){
+  const vid = document.getElementById('lbVideo');
+  if(vid){ vid.pause(); vid.removeAttribute('src'); }
   document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow='';
 }
